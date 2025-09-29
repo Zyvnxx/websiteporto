@@ -39,40 +39,43 @@
             padding: 0 20px;
         }
 
-        /* Loading Screen */
+/* Loading Screen */
 #loading-screen {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #303030; /* bisa diganti warna background */
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #111; /* background hitam */
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-/* Loader animasi lingkaran */
-.loader {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #717272; /* warna utama */
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Saat selesai loading, sembunyikan */
 #loading-screen.hidden {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s ease;
+}
+
+/* Emoji Loader */
+.emoji-loader {
+  font-size: 3rem;
+  display: flex;
+  gap: 15px;
+}
+
+.emoji-loader span {
+  display: inline-block;
+  animation: bounce 1s infinite;
+}
+
+.emoji-loader span:nth-child(1) { animation-delay: 0s; }
+.emoji-loader span:nth-child(2) { animation-delay: 0.2s; }
+.emoji-loader span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
 }
 
 
@@ -580,13 +583,17 @@
         }
     </style>
 </head>
-<body>
 
 <!-- Loading Screen -->
 <div id="loading-screen">
-  <div class="loader"></div>
+  <div class="emoji-loader">
+    <span>🎨🖌️</span>
+    <span>🎥📸</span>
+    <span>⚙️🛠️</span>
+  </div>
 </div>
 
+<body>
 
     <!-- Header -->
     <header>
@@ -1011,11 +1018,16 @@ function closeModal(id) {
           document.body.removeChild(love);
       }, 2000);})
 
-<script>
   window.addEventListener("load", () => {
     const loadingScreen = document.getElementById("loading-screen");
     loadingScreen.classList.add("hidden"); // kasih class hidden
   });
+
+  window.addEventListener("load", () => {
+    const loadingScreen = document.getElementById("loading-screen");
+    loadingScreen.classList.add("hidden");
+  });
+
 </script>
 </body>
 </html>
