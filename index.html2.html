@@ -350,6 +350,71 @@
             transform: translateX(10px);
         }
 
+/* Carousel modal */
+.modal-content.carousel {
+  position: relative;
+  max-width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content.carousel .slides {
+  width: 100%;
+  text-align: center;
+}
+
+.modal-content.carousel .slides img {
+  width: 100%;
+  max-height: 70vh;
+  border-radius: 12px;
+  object-fit: contain;
+  display: none; /* default hidden */
+}
+
+/* Tombol prev & next */
+.modal-content.carousel .prev,
+.modal-content.carousel .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  padding: 12px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  user-select: none;
+  border: none;
+}
+
+.modal-content.carousel .prev { left: 10px; }
+.modal-content.carousel .next { right: 10px; }
+
+.modal-content.carousel .prev:hover,
+.modal-content.carousel .next:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+/* Video dalam modal */
+.modal-content.video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+  margin: auto;
+}
+
+.modal-content.video video {
+  width: 100%;
+  max-height: 70vh; /* biar gak kepanjangan */
+  border-radius: 12px;
+  background: #000;
+}
+
+
         .contact-item i {
             font-size: 1.5rem;
             margin-right: 15px;
@@ -549,7 +614,7 @@
         </div>
         <div class="project-content">
           <h3>Video Editing</h3>
-          <p>klik disini untuk preview hasil edit video kreatif.</p>
+          <p>klik disinin untuk preview hasil edit video kreatif.</p>
         </div>
       </div>
 
@@ -594,22 +659,31 @@
 <!-- Project 1 Modal -->
 <div id="project1" class="modal">
   <span class="close" onclick="closeModal('project1')">&times;</span>
-  <div class="modal-content">
-   <video controls>
-  <source src="https://res.cloudinary.com/dgnenfdzf/video/upload/v1759144075/IMG_3069_tqgrlo.mov" type="video/mp4">
-</video>
-
-      Browser tidak mendukung video.
+  <div class="modal-content video">
+    <video controls>
+      <source src="https://res.cloudinary.com/dgnenfdzf/video/upload/v1759144075/IMG_3069_tqgrlo.mov" type="video/mp4">
+       <source src="https://res.cloudinary.com/dgnenfdzf/video/upload/v1759144075/IMG_3069_tqgrlo.mov" type="video/mp4">
+        <source src="https://res.cloudinary.com/dgnenfdzf/video/upload/v1759144075/IMG_3069_tqgrlo.mov" type="video/mp4">
+      Browser Anda tidak mendukung pemutar video.
     </video>
   </div>
 </div>
 
-<!-- Project 2 Modal --> <div id="project2" class="modal"> <span class="close" onclick="closeModal('project2')">&times;</span>
-     <div class="modal-content"> 
-        <img src="https://image2url.com/images/1759141682808-1b592703-a1dc-43b5-84ff-1b512e9ab229.jpeg" alt="Desain Grafis" style="width:100%; border-radius:12px;">
-         <img src="https://image2url.com/images/1759141304154-1a6105f1-8210-4376-a35f-a8c36110ce21.png" alt="Desain Grafis" style="width:100%; border-radius:12px;"> 
-        </div> 
+
+<!-- Project 2 Modal -->
+<div id="project2" class="modal">
+  <span class="close" onclick="closeModal('project2')">&times;</span>
+  <div class="modal-content carousel">
+    <button class="prev" onclick="changeSlide(-1, 'project2')">&#10094;</button>
+    
+    <div class="slides">
+      <img src="https://image2url.com/images/1759141682808-1b592703-a1dc-43b5-84ff-1b512e9ab229.jpeg" alt="Desain Grafis">
+      <img src="https://image2url.com/images/1759141304154-1a6105f1-8210-4376-a35f-a8c36110ce21.png" alt="Desain Grafis">
     </div>
+    
+    <button class="next" onclick="changeSlide(1, 'project2')">&#10095;</button>
+  </div>
+</div>
 
 
 <!-- Project 3 Modal -->
@@ -757,6 +831,39 @@ window.onclick = function(event) {
         </div>
     </footer>
 
+<script>
+let slideIndex = {};
+
+function showSlides(modalId, n) {
+  let slides = document.querySelectorAll(`#${modalId} .slides img`);
+  
+  if (!slideIndex[modalId]) slideIndex[modalId] = 1;
+  if (n > slides.length) slideIndex[modalId] = 1;
+  if (n < 1) slideIndex[modalId] = slides.length;
+
+  slides.forEach((img, i) => {
+    img.style.display = (i + 1 === slideIndex[modalId]) ? "block" : "none";
+  });
+}
+
+function changeSlide(n, modalId) {
+  slideIndex[modalId] += n;
+  showSlides(modalId, slideIndex[modalId]);
+}
+
+// Saat modal dibuka, tampilkan slide pertama
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
+  slideIndex[id] = 1;
+  showSlides(id, 1);
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+</script>
+
+
     <script>
         // Smooth scrolling untuk navigasi
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -824,7 +931,3 @@ window.onclick = function(event) {
     </script>
 </body>
 </html>
-
-
-
-
