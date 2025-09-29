@@ -414,6 +414,15 @@
   background: #000;
 }
 
+/* Video dalam carousel modal */
+.modal-content.carousel .slides video {
+  width: 100%;
+  max-height: 70vh;      /* biar pas di layar */
+  border-radius: 12px;
+  background: #000;      /* biar ada background hitam */
+  display: none;         /* default hidden, tampil via JS */
+}
+
 
         .contact-item i {
             font-size: 1.5rem;
@@ -604,7 +613,7 @@
     <!-- Projects Section -->
 <section class="section" id="projects">
   <div class="container">
-    <h2 class="section-title">Proyek Saya</h2>
+    <h2 class="section-title">Project & Certificate</h2>
     <div class="projects-grid">
 
       <!-- Project 1 -->
@@ -643,11 +652,11 @@
       <!-- Project 4 -->
       <div class="project-card" onclick="openModal('project4')">
         <div class="project-img">
-          <i class="fas fa-bullhorn" style="font-size: 4rem; color: var(--light);"></i>
+          <i class="fas fa-envelope" style="font-size: 4rem; color: var(--light);"></i>
         </div>
         <div class="project-content">
-          <h3>Social Media Management</h3>
-          <p>Strategi konten & analitik media sosial.</p>
+          <h3>Certificate</h3>
+          <p>Prieview Certificate.</p>
         </div>
       </div>
 
@@ -659,15 +668,27 @@
 <!-- Project 1 Modal -->
 <div id="project1" class="modal">
   <span class="close" onclick="closeModal('project1')">&times;</span>
-  <div class="modal-content video">
-    <video controls>
-      <source src="https://res.cloudinary.com/dgnenfdzf/video/upload/v1759144075/IMG_3069_tqgrlo.mov" type="video/mp4">
-       <source src="https://res.cloudinary.com/dgnenfdzf/video/upload/v1759144075/IMG_3069_tqgrlo.mov" type="video/mp4">
+  <div class="modal-content carousel">
+    <button class="prev" onclick="changeSlide(-1, 'project1')">&#10094;</button>
+    
+    <div class="slides">
+      <!-- Video 1 -->
+      <video controls>
         <source src="https://res.cloudinary.com/dgnenfdzf/video/upload/v1759144075/IMG_3069_tqgrlo.mov" type="video/mp4">
-      Browser Anda tidak mendukung pemutar video.
-    </video>
+        Browser Anda tidak mendukung pemutar video.
+      </video>
+
+      <!-- Video 2 -->
+      <video controls>
+        <source src="https://res.cloudinary.com/dgnenfdzf/video/upload/v1759149289/IMG_0303_zd6sgu.mp4" type="video/mp4">
+        Browser Anda tidak mendukung pemutar video.
+      </video>
+    </div>
+    
+    <button class="next" onclick="changeSlide(1, 'project1')">&#10095;</button>
   </div>
 </div>
+
 
 
 <!-- Project 2 Modal -->
@@ -675,9 +696,9 @@
   <span class="close" onclick="closeModal('project2')">&times;</span>
   <div class="modal-content carousel">
     <button class="prev" onclick="changeSlide(-1, 'project2')">&#10094;</button>
-    
     <div class="slides">
       <img src="https://image2url.com/images/1759141682808-1b592703-a1dc-43b5-84ff-1b512e9ab229.jpeg" alt="Desain Grafis">
+      <img src="https://image2url.com/images/1759148013108-afb7c5fe-8b6d-47c3-90a7-b169755c985b.jpeg" alt="Desain Grafis">
       <img src="https://image2url.com/images/1759141304154-1a6105f1-8210-4376-a35f-a8c36110ce21.png" alt="Desain Grafis">
     </div>
     
@@ -689,18 +710,35 @@
 <!-- Project 3 Modal -->
 <div id="project3" class="modal">
   <span class="close" onclick="closeModal('project3')">&times;</span>
-  <div class="modal-content">
-    <img src="drawing-sample.jpg" alt="Engineering Drawing" style="width:100%; border-radius:12px;">
+  <div class="modal-content carousel">
+    <button class="prev" onclick="changeSlide(-1, 'project3')">&#10094;</button>
+    
+    <div class="slides">
+      <img src="https://image2url.com/images/contoh3a.jpeg" alt="Project 3 - Gambar 1">
+      <img src="https://image2url.com/images/contoh3b.jpeg" alt="Project 3 - Gambar 2">
+    </div>
+    
+    <button class="next" onclick="changeSlide(1, 'project3')">&#10095;</button>
   </div>
 </div>
+
 
 <!-- Project 4 Modal -->
 <div id="project4" class="modal">
   <span class="close" onclick="closeModal('project4')">&times;</span>
-  <div class="modal-content">
-    <img src="sosmed-sample.jpg" alt="Social Media Management" style="width:100%; border-radius:12px;">
+  <div class="modal-content carousel">
+    <button class="prev" onclick="changeSlide(-1, 'project4')">&#10094;</button>
+    
+    <div class="slides">
+      <img src="https://image2url.com/images/contoh4a.jpeg" alt="Project 4 - Gambar 1">
+      <img src="https://image2url.com/images/contoh4b.jpeg" alt="Project 4 - Gambar 2">
+      <img src="https://image2url.com/images/contoh4c.jpeg" alt="Project 4 - Gambar 3">
+    </div>
+    
+    <button class="next" onclick="changeSlide(1, 'project4')">&#10095;</button>
   </div>
 </div>
+
 
 <!-- ================== STYLE ================== -->
 <style>
@@ -822,8 +860,8 @@ window.onclick = function(event) {
         <div class="container">
             <div class="social-links">
                 <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/Zyvnxx" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/nfalldyx/" class="social-link"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="social-link"><i class="fab fa-x"></i></a>
             </div>
             <p>&copy; <span id="year"></span> Naufal Dhiyaul Haq. All rights reserved.</p>
@@ -835,16 +873,17 @@ window.onclick = function(event) {
 let slideIndex = {};
 
 function showSlides(modalId, n) {
-  let slides = document.querySelectorAll(`#${modalId} .slides img`);
+  let slides = document.querySelectorAll(`#${modalId} .slides img, #${modalId} .slides video`);
   
   if (!slideIndex[modalId]) slideIndex[modalId] = 1;
   if (n > slides.length) slideIndex[modalId] = 1;
   if (n < 1) slideIndex[modalId] = slides.length;
 
-  slides.forEach((img, i) => {
-    img.style.display = (i + 1 === slideIndex[modalId]) ? "block" : "none";
+  slides.forEach((media, i) => {
+    media.style.display = (i + 1 === slideIndex[modalId]) ? "block" : "none";
   });
 }
+
 
 function changeSlide(n, modalId) {
   slideIndex[modalId] += n;
