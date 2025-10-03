@@ -391,32 +391,55 @@
             transform: translateX(10px);
         }
 
-/* Carousel modal */
-.modal-content.carousel {
+/* Carousel modal container */
+.modal-content.carousel .slides {
   position: relative;
-  max-width: 90%;
-  max-height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Default untuk semua gambar & video */
+.modal-content.carousel .slides img,
+.modal-content.carousel .slides video {
+  max-width: 100%;
+  max-height: 80vh;  /* biar tidak melebihi layar */
+  border-radius: 12px;
+  object-fit: contain; /* selalu jaga proporsi */
+}
+
+/* Portrait image khusus */
+.modal-content.carousel .slides img.portrait {
+  width: auto;        /* biar tinggi yang jadi patokan */
+  max-height: 80vh;   /* tinggi dibatasi layar */
+  max-width: 60%;     /* jangan terlalu lebar */
+}
+
+/* Landscape image khusus */
+.modal-content.carousel .slides img.landscape {
+  height: auto;       /* biar lebar yang jadi patokan */
+  max-width: 90%;     /* lebih lebar */
+  max-height: 70vh;   /* tetap dibatasi layar */
+}
+
+/* Hidden slides */
 .mySlides {
   display: none;
 }
 
-.mySlides img, .mySlides video {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-}
-
+/* Close button */
 .modal .close {
   position: absolute;
-  top: 20px; right: 35px;
+  top: 20px; 
+  right: 35px;
   font-size: 40px;
   font-weight: bold;
   color: #fff;
   cursor: pointer;
   z-index: 2000;
 }
+
+
 
 /* Tombol slide */
 .modal-content.carousel .prev,
