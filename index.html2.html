@@ -395,49 +395,54 @@
 .modal-content.carousel {
   position: relative;
   max-width: 90%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  max-height: 80%;
 }
 
-.modal-content.carousel .slides {
-  width: 100%;
-  text-align: center;
+.mySlides {
+  display: none;
 }
 
-.modal-content.carousel .slides img {
+.mySlides img, .mySlides video {
   width: 100%;
-  max-height: 70vh;
+  height: auto;
   border-radius: 12px;
-  object-fit: contain;
-  display: none; /* default hidden */
 }
 
-/* Tombol prev & next */
+.modal .close {
+  position: absolute;
+  top: 20px; right: 35px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2000;
+}
+
+/* Tombol slide */
 .modal-content.carousel .prev,
 .modal-content.carousel .next {
   cursor: pointer;
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
   padding: 12px;
-  margin-top: -22px;
   color: white;
-  font-weight: bold;
-  font-size: 24px;
+  font-size: 28px;
   border-radius: 50%;
   background: rgba(0,0,0,0.5);
-  user-select: none;
   border: none;
+  z-index: 2000;
+  transition: background 0.3s ease;
 }
 
-.modal-content.carousel .prev { left: 10px; }
-.modal-content.carousel .next { right: 10px; }
+.modal-content.carousel .prev { left: -10px; }
+.modal-content.carousel .next { right: -10px; }
 
 .modal-content.carousel .prev:hover,
 .modal-content.carousel .next:hover {
   background: rgba(0,0,0,0.8);
 }
+
 
 /* Video dalam modal */
 .modal-content.video {
@@ -797,13 +802,12 @@
 .modal {
   display: none;
   position: fixed;
-  z-index: 1000;
+  z-index: 1500;
   left: 0; top: 0;
   width: 100%; height: 100%;
   background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
 /* Modal content responsive */
@@ -838,20 +842,41 @@
 
 <!-- ================== SCRIPT ================== -->
 <script>
-function openModal(id) {
-  document.getElementById(id).style.display = 'flex';
+let slideIndex = {}; // object buat simpan slide tiap modal
+
+// Buka modal
+function openModal(projectId) {
+  document.getElementById(projectId).style.display = "flex";
+
+  if (!slideIndex[projectId]) slideIndex[projectId] = 1; 
+  showSlides(projectId, slideIndex[projectId]);
 }
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
+
+// Tutup modal
+function closeModal(projectId) {
+  document.getElementById(projectId).style.display = "none";
 }
-// Tutup modal jika klik area luar konten
-window.onclick = function(event) {
-  document.querySelectorAll('.modal').forEach(modal => {
-    if (event.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
+
+// Ganti slide
+function changeSlide(n, projectId) {
+  showSlides(projectId, slideIndex[projectId] += n);
 }
+
+// Tampilkan slide
+function showSlides(projectId, n) {
+  let slides = document.querySelectorAll(`#${projectId} .slides img, 
+                                          #${projectId} .slides video`);
+
+  if (slides.length === 0) return; // jika ga ada isi
+
+  if (n > slides.length) slideIndex[projectId] = 1;
+  if (n < 1) slideIndex[projectId] = slides.length;
+
+  slides.forEach(s => s.style.display = "none");
+  slides[slideIndex[projectId] - 1].style.display = "block";
+}
+</script>
+
 </script>
 
    <!-- Contact Section -->
@@ -919,39 +944,6 @@ window.onclick = function(event) {
 
         </div>
     </footer>
-
-<script>
-let slideIndex = {};
-
-function showSlides(modalId, n) {
-  let slides = document.querySelectorAll(`#${modalId} .slides img, #${modalId} .slides video`);
-  
-  if (!slideIndex[modalId]) slideIndex[modalId] = 1;
-  if (n > slides.length) slideIndex[modalId] = 1;
-  if (n < 1) slideIndex[modalId] = slides.length;
-
-  slides.forEach((media, i) => {
-    media.style.display = (i + 1 === slideIndex[modalId]) ? "block" : "none";
-  });
-}
-
-
-function changeSlide(n, modalId) {
-  slideIndex[modalId] += n;
-  showSlides(modalId, slideIndex[modalId]);
-}
-
-// Saat modal dibuka, tampilkan slide pertama
-function openModal(id) {
-  document.getElementById(id).style.display = "block";
-  slideIndex[id] = 1;
-  showSlides(id, 1);
-}
-
-function closeModal(id) {
-  document.getElementById(id).style.display = "none";
-}
-</script>
 
     <script>
         // Smooth scrolling untuk navigasi
