@@ -611,7 +611,7 @@
     </header>
 
     <!--image profile-->
-    <section class="hero">
+    <section class="hero" id="home">
   <div class="hero-content">
     <img src="https://image2url.com/images/1759063008325-20ca9f07-6b02-4b8b-81d8-c6882ebfd39a.jpg" alt="Foto Profil" class="profile-img" />
     <h1>Naufal Dhiyaul Haq</h1>
@@ -953,7 +953,6 @@ function closeModal(id) {
 }
 </script>
 
-
     <script>
         // Smooth scrolling untuk navigasi
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1022,6 +1021,9 @@ function closeModal(id) {
     const loadingScreen = document.getElementById("loading-screen");
     loadingScreen.classList.add("hidden"); // kasih class hidden
   });
+
+// Auto-update copyright year
+document.getElementById('year').textContent = new Date().getFullYear();
 
   window.addEventListener("load", () => {
     const loadingScreen = document.getElementById("loading-screen");
