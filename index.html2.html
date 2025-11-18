@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio - Naufal DH</title>
+    <meta name="description" content="Portofolio Naufal Dhiyaul Haq - Design Graphic, Video Editor, Drawing Engineering">
+    <meta name="keywords" content="design graphic, video editing, autocad, solidworks, portofolio">
+    <meta name="author" content="Naufal Dhiyaul Haq">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Variabel warna monokrom */
@@ -104,6 +107,7 @@
             border: 3px solid var(--accent); /* outline monokrom */
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             transition: transform 0.3s ease;
+            aspect-ratio: 1;
         }
 
         .profile-img:hover {
@@ -276,6 +280,7 @@
             background-color: var(--secondary);
             box-shadow: 0 10px 30px var(--shadow);
             transition: transform 0.3s ease;
+            will-change: transform;
         }
 
         .about-text:hover {
@@ -301,6 +306,7 @@
             text-align: center;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px var(--shadow);
+            will-change: transform;
         }
 
         .skill-item:hover {
@@ -314,50 +320,231 @@
             color: var(--light);
         }
 
-        /* Projects Section */
+        /* Folder Styles */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* lebih fleksibel */
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
-        .project-card {
-            background-color: var(--secondary);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px var(--shadow);
+        .project-folder {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 15px;
+            padding: 25px;
+            cursor: pointer;
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            will-change: transform;
         }
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px var(--shadow);
+        .project-folder:hover {
+            transform: translateY(-8px);
+            border-color: var(--light);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
-        .project-img {
-            width: 100%;
-            aspect-ratio: 16 / 9;       /* biar fleksibel, bentuk frame video/gambar */
-            background-color: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .project-folder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ffffff, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
         }
 
-        .project-img i {
-            font-size: clamp(2rem, 5vw, 4rem); /* icon fleksibel */
+        .folder-icon {
+            position: relative;
+            width: 60px;
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .folder-icon i {
+            position: absolute;
+            font-size: 3rem;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .folder-icon .fa-folder-open {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .project-folder:hover .fa-folder {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .project-folder:hover .fa-folder-open {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .folder-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
             color: var(--light);
         }
 
-        .project-content {
-            padding: 20px;
-            flex: 1;
+        .folder-content p {
+            color: var(--text);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
-        .project-content h3 {
-            margin-bottom: 10px;
+        .file-count {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--light);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Folder Modal Styles */
+        .folder-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .folder-modal-content {
+            background: var(--secondary);
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 85vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 1px solid var(--accent);
+        }
+
+        .folder-header {
+            background: var(--primary);
+            padding: 20px 30px;
+            border-bottom: 1px solid var(--accent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .folder-header h2 {
+            color: var(--light);
             font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .folder-header h2 i {
+            color: #ffd700;
+        }
+
+        .folder-close {
+            background: var(--accent);
+            border: none;
+            color: var(--light);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 2001;
+        }
+
+        .folder-close:hover {
+            background: #ff6b6b;
+            transform: rotate(90deg);
+        }
+
+        .folder-body {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .file-item {
+            background: var(--primary);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .file-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--light);
+            background: var(--accent);
+        }
+
+        .file-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+
+        .file-item.video .file-icon { color: #ff6b6b; }
+        .file-item.image .file-icon { color: #4ecdc4; }
+        .file-item.certificate .file-icon { color: #ffd700; }
+
+        .file-item h4 {
+            color: var(--light);
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .file-item .file-type {
+            color: var(--text);
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Scrollbar styling untuk folder body */
+        .folder-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .folder-body::-webkit-scrollbar-track {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        .folder-body::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .folder-body::-webkit-scrollbar-thumb:hover {
+            background: var(--light);
         }
 
         /* Contact Section */
@@ -389,102 +576,87 @@
             transform: translateX(10px);
         }
 
-        /* Carousel modal container */
-        .modal-content.carousel .slides {
+        /* Modal untuk file individual */
+        .file-modal {
+            display: none;
+            position: fixed;
+            z-index: 2500;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .file-modal-content {
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
             position: relative;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
         }
 
-        /* Default untuk semua gambar & video */
-        .modal-content.carousel .slides img,
-        .modal-content.carousel .slides video {
-            max-width: 100%;
-            max-height: 80vh;  /* biar tidak melebihi layar */
-            border-radius: 12px;
-            object-fit: contain; /* selalu jaga proporsi */
-        }
-
-        /* Portrait image khusus */
-        .modal-content.carousel .slides img.portrait {
-            width: auto;        /* biar tinggi yang jadi patokan */
-            max-height: 80vh;   /* tinggi dibatasi layar */
-            max-width: 60%;     /* jangan terlalu lebar */
-        }
-
-        /* Landscape image khusus */
-        .modal-content.carousel .slides img.landscape {
-            height: auto;       /* biar lebar yang jadi patokan */
-            max-width: 90%;     /* lebih lebar */
-            max-height: 70vh;   /* tetap dibatasi layar */
-        }
-
-        /* Hidden slides */
-        .mySlides {
-            display: none;
-        }
-
-        /* Close button */
-        .modal .close {
-            position: absolute;
-            top: 20px; 
-            right: 35px;
-            font-size: 40px;
-            font-weight: bold;
-            color: #fff;
-            cursor: pointer;
-            z-index: 2000;
-        }
-
-        /* Tombol slide */
-        .modal-content.carousel .prev,
-        .modal-content.carousel .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 12px;
-            color: white;
-            font-size: 28px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.5);
-            border: none;
-            z-index: 2000;
-            transition: background 0.3s ease;
-        }
-
-        .modal-content.carousel .prev { left: -10px; }
-        .modal-content.carousel .next { right: -10px; }
-
-        .modal-content.carousel .prev:hover,
-        .modal-content.carousel .next:hover {
-            background: rgba(0,0,0,0.8);
-        }
-
-        /* Video dalam modal */
-        .modal-content.video {
+        .file-modal-header {
+            background: var(--primary);
+            padding: 15px 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            max-width: 90%;
-            margin: auto;
+            border-bottom: 1px solid var(--accent);
         }
 
-        .modal-content.video video {
-            width: 100%;
-            max-height: 70vh; /* biar gak kepanjangan */
-            border-radius: 12px;
+        .file-modal-title {
+            color: var(--light);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .file-modal-close {
+            background: var(--accent);
+            border: none;
+            color: var(--light);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2501;
+        }
+
+        .file-modal-close:hover {
+            background: #ff6b6b;
+            transform: rotate(90deg);
+        }
+
+        .file-modal-body {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
             background: #000;
         }
 
-        /* Video dalam carousel modal */
-        .modal-content.carousel .slides video {
-            width: 100%;
-            max-height: 70vh;      /* biar pas di layar */
-            border-radius: 12px;
-            background: #000;      /* biar ada background hitam */
-            display: none;         /* default hidden, tampil via JS */
+        .file-modal-body img,
+        .file-modal-body video {
+            max-width: 100%;
+            max-height: 70vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .file-modal-body video {
+            background: #000;
         }
 
         .contact-item i {
@@ -603,47 +775,51 @@
             .skills {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Modal base */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1500;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Modal content responsive */
-        .modal-content {
-            width: 100%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow: auto;
-            background: #111;
-            border-radius: 12px;
-            padding: 10px;
-        }
-
-        /* Close button */
-        .close {
-            position: absolute;
-            top: 20px; right: 25px;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        /* Mobile tweak */
-        @media (max-width: 600px) {
-            .modal-content {
-                max-width: 95%;
-                max-height: 75vh;
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
+            
+            .folder-modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+            
+            .folder-body {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+                padding: 20px;
+            }
+            
+            .file-item {
+                padding: 15px;
+            }
+            
+            .file-icon {
+                font-size: 2rem;
+            }
+            
+            .file-modal-content {
+                width: 95%;
+                max-height: 85vh;
+            }
+            
+            .file-modal-body img,
+            .file-modal-body video {
+                max-height: 60vh;
+            }
+        }
+
+        /* Animasi fade-in untuk elemen saat scroll */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Partikel Background */
@@ -689,9 +865,9 @@
     <!--image profile-->
     <section class="hero" id="home">
         <div class="hero-content">
-            <img src="https://image2url.com/images/1759063008325-20ca9f07-6b02-4b8b-81d8-c6882ebfd39a.jpg" alt="Foto Profil" class="profile-img" />
+            <img src="https://image2url.com/images/1759063008325-20ca9f07-6b02-4b8b-81d8-c6882ebfd39a.jpg" alt="Naufal Dhiyaul Haq - Professional Designer and Video Editor" class="profile-img" loading="lazy" width="150" height="150" />
             <h1>Naufal Dhiyaul Haq</h1>
-            <p>Design Grafis | Video Editor | Drawing Engineering | Social Media Management</p>
+            <p>Design Graphic | Video Editor | Drawing Engineering | Social Media Management</p>
             <a href="#projects" class="btn">Lihat Project Saya</a>
         </div>
         
@@ -706,27 +882,27 @@
         <div class="container">
             <h2 class="section-title">Tentang Saya</h2>
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text fade-in-up">
                     <h3>Profil Saya</h3>
-                    <p>Saya adalah individu dengan minat dan bakat di bidang teknik mesin serta kreativitas dalam video editing, desain grafis, dan social media management. Latar belakang teknis yang saya miliki membantu saya berpikir sistematis dan solutif dalam menghadapi tantangan, sementara keterampilan kreatif saya mendukung dalam menghasilkan konten visual yang menarik, inovatif, dan efektif.</p>
+                    <p>Saya adalah individu dengan minat dan bakat di bidang teknik mesin serta kreativitas dalam video editing, desain graphic, dan social media management. Latar belakang teknis yang saya miliki membantu saya berpikir sistematis dan solutif dalam menghadapi tantangan, sementara keterampilan kreatif saya mendukung dalam menghasilkan konten visual yang menarik, inovatif, dan efektif.</p>
                 </div>
                 <div class="skills">
-                    <div class="skill-item">
+                    <div class="skill-item fade-in-up">
                         <i class="fas fa-code"></i>
-                        <h3>Web Development</h3>
-                        <p>HTML, C++</p>
+                        <h3>Frontend Developer</h3>
+                        <p>HTML, C++, React, Python</p>
                     </div>
-                    <div class="skill-item">
+                    <div class="skill-item fade-in-up">
                         <i class="fas fa-paint-brush"></i>
-                        <h3>Design Grafis</h3>
+                        <h3>Design Graphic</h3>
                         <p>Canva, Figma</p>
                     </div>
-                    <div class="skill-item">
+                    <div class="skill-item fade-in-up">
                         <i class="fas fa-video"></i>
                         <h3>Video Editing</h3>
                         <p>After effect, Capcut pro</p>
                     </div>
-                    <div class="skill-item">
+                    <div class="skill-item fade-in-up">
                         <i class="fas fa-drafting-compass"></i>
                         <h3>Drafter</h3>
                         <p>Autocad, Solidworks</p>
@@ -742,47 +918,55 @@
             <h2 class="section-title">Project & Certificate</h2>
             <div class="projects-grid">
 
-                <!-- Project 1 -->
-                <div class="project-card" onclick="openModal('project1')">
-                    <div class="project-img">
-                        <i class="fas fa-video" style="font-size: 4rem; color: var(--light);"></i>
+                <!-- Project 1 - Folder Style -->
+                <div class="project-folder" onclick="openFolder('project1')">
+                    <div class="folder-icon">
+                        <i class="fas fa-folder"></i>
+                        <i class="fas fa-folder-open"></i>
                     </div>
-                    <div class="project-content">
+                    <div class="folder-content">
                         <h3>Video Editing</h3>
-                        <p>klik disini untuk preview hasil edit video kreatif.</p>
+                        <p>Klik untuk melihat koleksi video editing</p>
+                        <div class="file-count">2 Files</div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="project-card" onclick="openModal('project2')">
-                    <div class="project-img">
-                        <i class="fas fa-paint-brush" style="font-size: 4rem; color: var(--light);"></i>
+                <!-- Project 2 - Folder Style -->
+                <div class="project-folder" onclick="openFolder('project2')">
+                    <div class="folder-icon">
+                        <i class="fas fa-folder"></i>
+                        <i class="fas fa-folder-open"></i>
                     </div>
-                    <div class="project-content">
-                        <h3>Desain Grafis</h3>
-                        <p>klik disini untuk preview Desain poster, logo, dan konten visual.</p>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card" onclick="openModal('project3')">
-                    <div class="project-img">
-                        <i class="fas fa-drafting-compass" style="font-size: 4rem; color: var(--light);"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Engineering Drawing</h3>
-                        <p>Klik disini untuk preview Gambar teknik 2D/3D dengan AutoCAD & SolidWorks.</p>
+                    <div class="folder-content">
+                        <h3>Design</h3>
+                        <p>Klik untuk melihat koleksi desain</p>
+                        <div class="file-count">3 Files</div>
                     </div>
                 </div>
 
-                <!-- Project 4 -->
-                <div class="project-card" onclick="openModal('project4')">
-                    <div class="project-img">
-                        <i class="fas fa-envelope" style="font-size: 4rem; color: var(--light);"></i>
+                <!-- Project 3 - Folder Style -->
+                <div class="project-folder" onclick="openFolder('project3')">
+                    <div class="folder-icon">
+                        <i class="fas fa-folder"></i>
+                        <i class="fas fa-folder-open"></i>
                     </div>
-                    <div class="project-content">
+                    <div class="folder-content">
+                        <h3>Frontend Developer</h3>
+                        <p>Klik untuk melihat website</p>
+                        <div class="file-count">2 Files</div>
+                    </div>
+                </div>
+
+                <!-- Project 4 - Folder Style -->
+                <div class="project-folder" onclick="openFolder('project4')">
+                    <div class="folder-icon">
+                        <i class="fas fa-folder"></i>
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <div class="folder-content">
                         <h3>Certificate</h3>
-                        <p>Prieview Certificate.</p>
+                        <p>Klik untuk melihat sertifikat</p>
+                        <div class="file-count">5 Files</div>
                     </div>
                 </div>
 
@@ -790,76 +974,167 @@
         </div>
     </section>
 
-    <!-- ================== MODALS ================== -->
-    <!-- Project 1 Modal -->
-    <div id="project1" class="modal">
-        <span class="close" onclick="closeModal('project1')">&times;</span>
-        <div class="modal-content carousel">
-            <button class="prev" onclick="changeSlide(-1, 'project1')">&#10094;</button>
-            
-            <div class="slides">
-                <!-- Video 1 -->
-                <video controls>
-                    <source src="https://res.cloudinary.com/dgnenfdzf/video/upload/v1759144075/IMG_3069_tqgrlo.mov" type="video/mp4">
-                    Browser Anda tidak mendukung pemutar video.
-                </video>
-
-                <!-- Video 2 -->
-                <video controls>
-                    <source src="https://res.cloudinary.com/dgnenfdzf/video/upload/v1759149289/IMG_0303_zd6sgu.mp4" type="video/mp4">
-                    Browser Anda tidak mendukung pemutar video.
-                </video>
+    <!-- ================== FOLDER MODALS ================== -->
+    <!-- Project 1 Folder -->
+    <div id="project1-folder" class="folder-modal">
+        <div class="folder-modal-content">
+            <div class="folder-header">
+                <h2><i class="fas fa-folder-open"></i> Video Editing Projects</h2>
+                <button class="folder-close" onclick="closeFolder('project1')">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-            
-            <button class="next" onclick="changeSlide(1, 'project1')">&#10095;</button>
+            <div class="folder-body">
+                <div class="file-item video" onclick="openFileModal('https://res.cloudinary.com/dgnenfdzf/video/upload/v1759144075/IMG_3069_tqgrlo.mov', 'video', 'Project Video 1')">
+                    <div class="file-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h4>Project Video 1</h4>
+                    <div class="file-type">MP4 Video</div>
+                </div>
+                <div class="file-item video" onclick="openFileModal('https://res.cloudinary.com/dgnenfdzf/video/upload/v1759149289/IMG_0303_zd6sgu.mp4', 'video', 'Project Video 2')">
+                    <div class="file-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h4>Project Video 2</h4>
+                    <div class="file-type">MP4 Video</div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Project 2 Modal -->
-    <div id="project2" class="modal">
-        <span class="close" onclick="closeModal('project2')">&times;</span>
-        <div class="modal-content carousel">
-            <button class="prev" onclick="changeSlide(-1, 'project2')">&#10094;</button>
-            <div class="slides">
-                <img src="https://image2url.com/images/1759141682808-1b592703-a1dc-43b5-84ff-1b512e9ab229.jpeg" alt="Desain Grafis">
-                <img src="https://image2url.com/images/1759148013108-afb7c5fe-8b6d-47c3-90a7-b169755c985b.jpeg" alt="Desain Grafis">
-                <img src="https://image2url.com/images/1759141304154-1a6105f1-8210-4376-a35f-a8c36110ce21.png" alt="Desain Grafis">
+    <!-- Project 2 Folder -->
+    <div id="project2-folder" class="folder-modal">
+        <div class="folder-modal-content">
+            <div class="folder-header">
+                <h2><i class="fas fa-folder-open"></i> Design Graphic Projects</h2>
+                <button class="folder-close" onclick="closeFolder('project2')">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-            
-            <button class="next" onclick="changeSlide(1, 'project2')">&#10095;</button>
+            <div class="folder-body">
+                <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1759141682808-1b592703-a1dc-43b5-84ff-1b512e9ab229.jpeg', 'image', 'Poster Design 1')">
+                    <div class="file-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h4>Poster Design 1</h4>
+                    <div class="file-type">JPEG Image</div>
+                </div>
+                <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1763485438726-5e7fca3f-72dc-43cb-9001-2dbb4d4ae0bf.png', 'image', 'Logo Design')">
+                    <div class="file-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h4>Logo Design</h4>
+                    <div class="file-type">PNG Image</div>
+                </div>
+                <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1759141304154-1a6105f1-8210-4376-a35f-a8c36110ce21.png', 'image', 'Social Media Design')">
+                    
+                    <div class="file-icon">
+                        <i class="fas fa-object-group"></i>
+                    </div>
+                    <h4>Social Media</h4>
+                    <div class="file-type">JPEG Image</div>
+                </div>
+                  <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1763485750663-15f3aeab-13a3-40dc-969b-4be1954e3d9c.png', 'image', 'Fashion Design')">
+                    <div class="file-icon">
+                        <i class="fas fa-shirt"></i>
+                    </div>
+                    <h4>Fashion Daesign</h4>
+                    <div class="file-type">PNG Image</div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Project 3 Modal -->
-    <div id="project3" class="modal">
-        <span class="close" onclick="closeModal('project3')">&times;</span>
-        <div class="modal-content carousel">
-            <button class="prev" onclick="changeSlide(-1, 'project3')">&#10094;</button>
-            
-            <div class="slides">
-                <img src="https://image2url.com/images/contoh3a.jpeg" alt="Project 3 - Gambar 1">
-                <img src="https://image2url.com/images/contoh3b.jpeg" alt="Project 3 - Gambar 2">
+    <!-- Project 3 Folder -->
+    <div id="project3-folder" class="folder-modal">
+        <div class="folder-modal-content">
+            <div class="folder-header">
+                <h2><i class="fas fa-folder-open"></i>Frontend Developer</h2>
+                <button class="folder-close" onclick="closeFolder('project3')">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-            
-            <button class="next" onclick="changeSlide(1, 'project3')">&#10095;</button>
+            <div class="folder-body">
+                <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1763482306786-e5c211c8-fe47-4b38-9afd-810e641afa43.png', 'image', 'Zhalecth Website')">
+                    <div class="file-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4>Website Clothing Brand</h4>
+                    <div class="file-type">HTML</div>
+                </div>
+                <div class="file-item image" onclick="openFileModal('https://image2url.com/images/contoh3b.jpeg', 'image', '-- COMING SOON--')">
+                    <div class="file-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h4>-- COMING SOON --</h4>
+                    <div class="file-type">HTML</div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Project 4 Modal -->
-    <div id="project4" class="modal">
-        <span class="close" onclick="closeModal('project4')">&times;</span>
-        <div class="modal-content carousel">
-            <button class="prev" onclick="changeSlide(-1, 'project4')">&#10094;</button>
-            
-            <div class="slides">
-                <img src="https://image2url.com/images/1759635388386-b0a94e17-5f97-481e-a1b0-0c196d82533c.png" alt="Project 4 - Gambar 1">
-                <img src="https://image2url.com/images/1759635452237-6d14018c-e14a-49a9-aefe-296d6b1972ff.png" alt="Project 4 - Gambar 2">
-                <img src="https://image2url.com/images/1759635504971-d31c4202-c0c5-4d60-b34f-5d91e659287d.png" alt="Project 4 - Gambar 3">
-                <img src="https://image2url.com/images/1759635566437-91d2dff1-3d48-4af6-a21b-726722804490.png" alt="Project 4 - Gambar 4">
-                <img src="https://image2url.com/images/contoh" alt="Project 4 - Gambar 4">
+    <!-- Project 4 Folder -->
+    <div id="project4-folder" class="folder-modal">
+        <div class="folder-modal-content">
+            <div class="folder-header">
+                <h2><i class="fas fa-folder-open"></i> Certificates</h2>
+                <button class="folder-close" onclick="closeFolder('project4')">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-            
-            <button class="next" onclick="changeSlide(1, 'project4')">&#10095;</button>
+            <div class="folder-body">
+                <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1759635388386-b0a94e17-5f97-481e-a1b0-0c196d82533c.png', 'image', 'Certificate 1')">
+                    <div class="file-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h4>Osis Organization</h4>
+                    <div class="file-type">PNG Image</div>
+                </div>
+                <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1759635452237-6d14018c-e14a-49a9-aefe-296d6b1972ff.png', 'image', 'Certificate 2')">
+                    <div class="file-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4>PT. Zeno Alumi Indonesia</h4>
+                    <div class="file-type">PNG Image</div>
+                </div>
+                <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1759635504971-d31c4202-c0c5-4d60-b34f-5d91e659287d.png', 'image', 'Certificate 3')">
+                    <div class="file-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h4>PT. Formosa Teknologi Sentral</h4>
+                    <div class="file-type">PNG Image</div>
+                </div>
+                <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1759635566437-91d2dff1-3d48-4af6-a21b-726722804490.png', 'image', 'Certificate 4')">
+                    <div class="file-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h4>PT. Krakatau Sarana Properti</h4>
+                    <div class="file-type">PNG Image</div>
+                </div>
+                <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1763478326687-b7279178-5334-4085-a6ea-15463b3a3b80.png', 'image', 'Certificate 5')">
+                    <div class="file-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>Dicoding Academy</h4>
+                    <div class="file-type">PNG Image</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Modal untuk menampilkan file individual -->
+    <div id="file-modal" class="file-modal">
+        <div class="file-modal-content">
+            <div class="file-modal-header">
+                <div class="file-modal-title" id="file-modal-title">File Preview</div>
+                <button class="file-modal-close" onclick="closeFileModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="file-modal-body" id="file-modal-body">
+                <!-- Konten akan dimuat di sini -->
+            </div>
         </div>
     </div>
 
@@ -868,7 +1143,7 @@
         <div class="container">
             <h2 class="section-title">Hubungi Saya</h2>
             <div class="contact-content">
-                <div class="contact-info">
+                <div class="contact-info fade-in-up">
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
@@ -893,8 +1168,8 @@
                 </div>
 
                 <!-- Form Contact dengan Formspree -->
-                <div class="contact-form">
-                    <form action="https://formspree.io/f/myznenzw" method="POST">
+                <div class="contact-form fade-in-up">
+                    <form action="https://formspree.io/f/myznenzw" method="POST" id="contact-form">
                         <div class="form-group">
                             <input type="text" name="nama" class="form-control" placeholder="Nama Anda" required>
                         </div>
@@ -907,7 +1182,7 @@
                         <div class="form-group">
                             <textarea name="pesan" class="form-control" placeholder="Pesan Anda" required></textarea>
                         </div>
-                        <button type="submit" class="btn">Kirim Pesan</button>
+                        <button type="submit" class="btn" id="submit-btn">Kirim Pesan</button>
                     </form>
                 </div>
             </div>
@@ -918,7 +1193,7 @@
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/naufal-dhiyaul-haq-035733384?utm_source=share_via&utm_content=profile&utm_medium=member_ios" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://github.com/Zyvnxx" class="social-link"><i class="fab fa-github"></i></a>
                 <a href="https://www.instagram.com/nfalldyx/" class="social-link"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="social-link"><i class="fab fa-x"></i></a>
@@ -1013,164 +1288,241 @@
             },
             retina_detect: true
         });
+
+        // Smooth scrolling untuk navigasi
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#' || !targetId) return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animasi saat scroll (IntersectionObserver)
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // JS tapping icon effect
+        document.addEventListener('click', function(e) {
+            let love = document.createElement('div');
+            love.innerHTML = '👆';
+            love.style.position = 'absolute';
+            love.style.left = e.pageX + 'px';
+            love.style.top = e.pageY + 'px';
+            love.style.fontSize = '24px';
+            love.style.opacity = 1;
+            love.style.transition = 'top 2s ease-out, opacity 2s';
+            love.style.zIndex = '9999';
+            document.body.appendChild(love);
+
+            setTimeout(() => {
+                love.style.top = (e.pageY - 100) + 'px';
+                love.style.opacity = 0;
+            }, 10);
+
+            setTimeout(() => {
+                if (love.parentNode) document.body.removeChild(love);
+            }, 2000);
+        });
+
+        // Loading screen hide
+        window.addEventListener("load", () => {
+            const loadingScreen = document.getElementById("loading-screen");
+            if (loadingScreen) {
+                setTimeout(() => {
+                    loadingScreen.classList.add("hidden");
+                }, 1000);
+            }
+        });
+
+        // Auto-update copyright year
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // ===== Folder functionality =====
+        function openFolder(projectId) {
+            const modal = document.getElementById(projectId + '-folder');
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeFolder(projectId) {
+            const modal = document.getElementById(projectId + '-folder');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // File modal functionality
+        function openFileModal(fileUrl, fileType, fileName) {
+            const modal = document.getElementById('file-modal');
+            const modalBody = document.getElementById('file-modal-body');
+            const modalTitle = document.getElementById('file-modal-title');
+            
+            if (!modal || !modalBody || !modalTitle) return;
+            
+            // Set modal title
+            modalTitle.textContent = fileName || 'File Preview';
+            
+            // Clear previous content
+            modalBody.innerHTML = '';
+            
+            // Create content based on file type
+            if (fileType === 'video') {
+                const video = document.createElement('video');
+                video.src = fileUrl;
+                video.controls = true;
+                video.style.maxWidth = '100%';
+                video.style.maxHeight = '70vh';
+                video.style.width = 'auto';
+                video.style.height = 'auto';
+                video.style.objectFit = 'contain';
+                modalBody.appendChild(video);
+                
+                // Auto play video
+                video.play().catch(e => {
+                    console.log('Autoplay prevented:', e);
+                });
+            } else if (fileType === 'image') {
+                const img = document.createElement('img');
+                img.src = fileUrl;
+                img.alt = fileName || 'Project Image';
+                img.style.maxWidth = '100%';
+                img.style.maxHeight = '70vh';
+                img.style.width = 'auto';
+                img.style.height = 'auto';
+                img.style.objectFit = 'contain';
+                modalBody.appendChild(img);
+            }
+            
+            // Show modal
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Close folder
+            const currentFolder = getCurrentFolder(fileUrl);
+            if (currentFolder) {
+                closeFolder(currentFolder);
+            }
+        }
+
+        function getCurrentFolder(fileUrl) {
+            if (fileUrl.includes('project1')) return 'project1';
+            if (fileUrl.includes('project2')) return 'project2';
+            if (fileUrl.includes('project3')) return 'project3';
+            if (fileUrl.includes('project4')) return 'project4';
+            return null;
+        }
+
+        function closeFileModal() {
+            const modal = document.getElementById('file-modal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                
+                // Stop any playing videos
+                const videos = modal.querySelectorAll('video');
+                videos.forEach(video => {
+                    video.pause();
+                    video.currentTime = 0;
+                });
+            }
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(e) {
+            // Close folder modals
+            if (e.target.classList.contains('folder-modal')) {
+                const modalId = e.target.id.replace('-folder', '');
+                closeFolder(modalId);
+            }
+            
+            // Close file modal
+            if (e.target.classList.contains('file-modal')) {
+                closeFileModal();
+            }
+        });
+
+        // Close modals with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                // Close folder modals
+                document.querySelectorAll('.folder-modal').forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        const modalId = modal.id.replace('-folder', '');
+                        closeFolder(modalId);
+                    }
+                });
+                
+                // Close file modal
+                closeFileModal();
+            }
+        });
+
+        // Form validation & UX
+        const contactForm = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        
+        if (contactForm && submitBtn) {
+            contactForm.addEventListener('submit', function(e) {
+                const email = this.querySelector('input[type="email"]');
+                if (!email.value.includes('@')) {
+                    e.preventDefault();
+                    email.focus();
+                    email.style.border = '2px solid #ff6b6b';
+                    setTimeout(() => {
+                        email.style.border = 'none';
+                    }, 3000);
+                    return;
+                }
+                
+                // Loading state
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+                submitBtn.disabled = true;
+                
+                // Reset setelah 5 detik (fallback)
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 5000);
+            });
+        }
+
+        // Preload critical resources
+        window.addEventListener('load', function() {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            console.log('Page load time:', loadTime);
+        });
+
+        // Debounce scroll events
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                // Scroll-based logic here if needed
+            }, 100);
+        });
     </script>
-
-   <!-- Ganti skrip inline terakhir Anda dengan blok ini (letakkan sebelum tag penutup </body>) -->
-<script>
-  // Smooth scrolling untuk navigasi
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          if (targetId === '#' || !targetId) return;
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-              window.scrollTo({
-                  top: targetElement.offsetTop - 80,
-                  behavior: 'smooth'
-              });
-          }
-      });
-  });
-
-  // Animasi saat scroll (IntersectionObserver)
-  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-  const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              entry.target.style.opacity = 1;
-              entry.target.style.transform = 'translateY(0)';
-          }
-      });
-  }, observerOptions);
-
-  document.querySelectorAll('.about-text, .skill-item, .project-card, .contact-info, .contact-form').forEach(el => {
-      el.style.opacity = 0;
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      observer.observe(el);
-  });
-
-  // JS tapping icon effect
-  document.addEventListener('click', function(e) {
-      let love = document.createElement('div');
-      love.innerHTML = '👆';
-      love.style.position = 'absolute';
-      love.style.left = e.pageX + 'px';
-      love.style.top = e.pageY + 'px';
-      love.style.fontSize = '24px';
-      love.style.opacity = 1;
-      love.style.transition = 'top 2s ease-out, opacity 2s';
-      document.body.appendChild(love);
-
-      setTimeout(() => {
-          love.style.top = (e.pageY - 100) + 'px';
-          love.style.opacity = 0;
-      }, 10);
-
-      setTimeout(() => {
-          if (love.parentNode) document.body.removeChild(love);
-      }, 2000);
-  });
-
-  // Loading screen hide (pastikan #loading-screen berada INSIDE <body>)
-  window.addEventListener("load", () => {
-      const loadingScreen = document.getElementById("loading-screen");
-      if (loadingScreen) loadingScreen.classList.add("hidden");
-  });
-
-  // Auto-update copyright year
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // ===== Modal & Carousel functionality (diperbaiki) =====
-  let slideIndex = {}; // menyimpan index tiap modal
-
-  function openModal(projectId) {
-      const modal = document.getElementById(projectId);
-      if (!modal) return;
-      modal.style.display = "flex";
-
-      // inisialisasi index jika belum ada
-      if (!slideIndex[projectId]) slideIndex[projectId] = 1;
-      showSlides(projectId, slideIndex[projectId]);
-  }
-
-  function closeModal(projectId) {
-      const modal = document.getElementById(projectId);
-      if (!modal) return;
-      modal.style.display = "none";
-
-      // hentikan video saat modal ditutup
-      modal.querySelectorAll('video').forEach(v => {
-          try { v.pause(); v.currentTime = 0; } catch(e){}
-      });
-  }
-
-  function changeSlide(n, projectId) {
-      if (!slideIndex[projectId]) slideIndex[projectId] = 1;
-      showSlides(projectId, slideIndex[projectId] + n);
-  }
-
-  function showSlides(projectId, n) {
-      const modal = document.getElementById(projectId);
-      if (!modal) return;
-      const slides = Array.from(modal.querySelectorAll('.slides > *')); // ambil semua child (img/video)
-      if (!slides.length) return;
-
-      // update index & boundary
-      if (!slideIndex[projectId]) slideIndex[projectId] = 1;
-      if (typeof n === 'number') slideIndex[projectId] = n;
-      if (slideIndex[projectId] > slides.length) slideIndex[projectId] = 1;
-      if (slideIndex[projectId] < 1) slideIndex[projectId] = slides.length;
-
-      slides.forEach((el, idx) => {
-          if (idx === slideIndex[projectId] - 1) {
-              // tampilkan slide saat ini
-              el.style.display = (el.tagName.toLowerCase() === 'video') ? 'block' : '';
-              // jika video, coba play
-              if (el.tagName.toLowerCase() === 'video') {
-                  el.play().catch(()=>{/* autoplay mungkin diblokir */});
-              }
-          } else {
-              // sembunyikan slide lain
-              el.style.display = 'none';
-              if (el.tagName.toLowerCase() === 'video') {
-                  el.pause();
-                  el.currentTime = 0;
-              }
-          }
-      });
-  }
-
-  // optional: tutup modal saat klik di luar konten atau tekan Escape
-  document.addEventListener('click', function(e) {
-      // klik di area modal (background semi-transparent)
-      if (e.target.classList && e.target.classList.contains('modal')) {
-          e.target.style.display = 'none';
-          // hentikan semua video di modal itu
-          e.target.querySelectorAll('video').forEach(v => { try{ v.pause(); v.currentTime = 0; }catch(e){} });
-      }
-  });
-
-  document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-          document.querySelectorAll('.modal').forEach(m => {
-              if (m.style.display === 'flex') {
-                  m.style.display = 'none';
-                  m.querySelectorAll('video').forEach(v => { try{ v.pause(); v.currentTime = 0; }catch(e){} });
-              }
-          });
-      }
-  });
-
-  // Saat pertama kali load, siapkan semua modal supaya menampilkan slide pertama saat dibuka
-  document.querySelectorAll('.modal').forEach(modal => {
-      const id = modal.id;
-      if (id) slideIndex[id] = 1;
-      // Hide all slides initially so showSlides controls visibility
-      const slides = modal.querySelectorAll('.slides > *');
-      slides.forEach(s => { s.style.display = 'none'; });
-  });
-</script>
-
+</body>
+</html>
