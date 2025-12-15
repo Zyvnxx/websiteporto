@@ -159,6 +159,14 @@
             transform: translateY(-3px);
         }
 
+        /* Mobile Menu Toggle - Added like baduy2.html */
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light);
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -839,45 +847,146 @@
             }
         }
 
-        /* Responsif */
+        /* =========================== */
+        /* RESPONSIVE STYLES - UPDATED */
+        /* Like baduy2.html */
+        /* =========================== */
         @media (max-width: 768px) {
             .navbar {
-                flex-direction: column;
+                padding: 12px 0;
             }
             
             .nav-links {
-                margin-top: 20px;
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary);
+                flex-direction: column;
+                padding: 15px;
+                box-shadow: var(--shadow);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                display: flex;
             }
             
             .nav-links li {
-                margin: 0 10px;
+                margin: 8px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: var(--light);
+            }
+            
+            .hero {
+                padding: 80px 0 60px;
+            }
+            
+            .hero-content {
+                padding-top: 20px;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
             }
             
             .hero h1 {
-                font-size: clamp(1.8rem, 5vw, 3.5rem);
+                font-size: 1.8rem;
             }
             
-            .about-content, .contact-content {
-                flex-direction: column;
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                margin-bottom: 40px;
+                font-size: 1.8rem;
+            }
+            
+            .section-title::after {
+                bottom: -12px;
+                width: 60px;
+                height: 3px;
+            }
+            
+            .about-text, .contact-info, .contact-form {
+                padding: 20px;
+            }
+            
+            .about-text h3, .contact-info h3 {
+                font-size: 1.3rem;
             }
             
             .skills {
                 grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .skill-item {
+                padding: 15px;
+            }
+            
+            .skill-item i {
+                font-size: 2rem;
             }
             
             .projects-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .project-folder {
+                padding: 20px;
+            }
+            
+            .folder-preview {
+                height: 150px;
+                margin-bottom: 15px;
+            }
+            
+            .folder-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .folder-content p {
+                font-size: 0.9rem;
+            }
+            
+            .file-count {
+                font-size: 0.8rem;
+                padding: 4px 10px;
             }
             
             .folder-modal-content {
                 margin: 10% auto;
                 width: 95%;
+                max-height: 80vh;
+            }
+            
+            .folder-header {
+                padding: 15px 20px;
+            }
+            
+            .folder-header h2 {
+                font-size: 1.2rem;
             }
             
             .folder-body {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 15px;
                 padding: 20px;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 15px;
+                max-height: 60vh;
             }
             
             .file-item {
@@ -885,25 +994,139 @@
             }
             
             .file-icon {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            
+            .file-item h4 {
+                font-size: 0.85rem;
+            }
+            
+            .file-item .file-type {
+                font-size: 0.75rem;
             }
             
             .file-modal-content {
                 width: 95%;
-                max-height: 85vh;
+                max-height: 80vh;
+            }
+            
+            .file-modal-header {
+                padding: 12px 15px;
+            }
+            
+            .file-modal-title {
+                font-size: 1rem;
+            }
+            
+            .file-modal-body {
+                padding: 15px;
             }
             
             .file-modal-body img,
             .file-modal-body video {
                 max-height: 60vh;
             }
-
-            .folder-preview {
-                height: 150px;
-            }
-
+            
             .preview-grid {
                 grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+            }
+            
+            .contact-content {
+                gap: 30px;
+            }
+            
+            .contact-item {
+                padding: 12px;
+            }
+            
+            .contact-item i {
+                font-size: 1.2rem;
+                width: 30px;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 0.95rem;
+            }
+            
+            footer {
+                padding: 40px 0 20px;
+            }
+            
+            .social-links {
+                margin-bottom: 20px;
+            }
+            
+            .social-link {
+                width: 42px;
+                height: 42px;
+                margin: 0 8px;
+            }
+            
+            .social-link i {
+                font-size: 1rem;
+            }
+            
+            footer p {
+                font-size: 0.9rem;
+            }
+            
+            .preview-thumbnail video {
+                border-radius: 8px;
+            }
+            
+            .certificate-img {
+                border-radius: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .about-text h3, .contact-info h3 {
+                font-size: 1.1rem;
+            }
+            
+            .folder-preview {
+                height: 130px;
+            }
+            
+            .folder-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .file-modal-body {
+                padding: 10px;
+            }
+            
+            .form-control {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+            
+            textarea.form-control {
+                min-height: 120px;
+            }
+            
+            .social-link {
+                width: 38px;
+                height: 38px;
             }
         }
 
@@ -944,7 +1167,7 @@
     <!-- Partikel Background -->
     <div id="particles-js"></div>
 
-    <!-- Header -->
+    <!-- Header - Updated with mobile menu -->
     <header>
         <div class="container">
             <nav class="navbar">
@@ -955,6 +1178,7 @@
                     <li><a href="#projects">Project</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <div class="mobile-menu">☰</div>
             </nav>
         </div>
     </header>
@@ -1053,7 +1277,7 @@
                     <div class="folder-content">
                         <h3>Design Graphic</h3>
                         <p>Klik untuk melihat koleksi desain</p>
-                        <div class="file-count">4 Designs</div>
+                        <div class="file-count">5 Designs</div>
                     </div>
                 </div>
 
@@ -1152,6 +1376,13 @@
                         <i class="fas fa-palette"></i>
                     </div>
                     <h4>Creative Recruitment</h4>
+                    <div class="file-type">PNG Image</div>
+                </div>
+                     <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1765784680389-c2e50dd7-32b5-4840-973f-7adae68d64dc.png', 'image', 'Thumbnail Youtube')">
+                    <div class="file-icon">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <h4>Thumbnail Youtube</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
                 <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1759141304154-1a6105f1-8210-4376-a35f-a8c36110ce21.png', 'image', 'Frame Instagram Story')">
@@ -1437,6 +1668,23 @@
             retina_detect: true
         });
 
+        // Mobile Menu Toggle - Like baduy2.html
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenu && navLinks) {
+            mobileMenu.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
         // Smooth scrolling untuk navigasi
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1449,6 +1697,11 @@
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
+                }
+                
+                // Close mobile menu if open
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
                 }
             });
         });
@@ -1510,6 +1763,11 @@
             if (modal) {
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
+                
+                // Close mobile menu if open
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
             }
         }
 
