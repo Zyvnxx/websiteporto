@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Portofolio - Naufal DH</title>
     <meta name="description" content="Portofolio Naufal Dhiyaul Haq - Design Graphic, Video Editor, Drawing Engineering">
     <meta name="keywords" content="design graphic, video editing, autocad, solidworks, portofolio">
@@ -19,7 +19,6 @@
             --shadow: rgba(0, 0, 0, 0.2);
         }
 
-        /* Reset dan gaya dasar */
         * {
             margin: 0;
             padding: 0;
@@ -34,7 +33,6 @@
             overflow-x: hidden;
         }
 
-        /* Container dengan sudut tumpul */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -46,7 +44,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: #111; /* background hitam */
+            background: #111;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -59,7 +57,6 @@
             visibility: hidden;
         }
 
-        /* Emoji Loader */
         .emoji-loader {
             font-size: 3rem;
             display: flex;
@@ -90,28 +87,6 @@
             z-index: 1000;
             box-shadow: 0 4px 12px var(--shadow);
             border-radius: 0 0 20px 20px;
-        }
-
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 100%; /* bikin lingkaran */
-            object-fit: cover;
-            border: 3px solid var(--accent); /* outline monokrom */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-            aspect-ratio: 1;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.50);
         }
 
         .navbar {
@@ -176,6 +151,21 @@
             padding: 0 20px;
         }
 
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 100%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            aspect-ratio: 1;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.50);
+        }
+
         .hero h1 {
             font-size: clamp(1.8rem, 5vw, 3.5rem);
             margin-bottom: 20px;
@@ -209,7 +199,7 @@
             box-shadow: 0 8px 20px var(--shadow);
         }
 
-        /* Background shapes dengan sudut tumpul */
+        /* Background shapes */
         .shape {
             position: absolute;
             border-radius: 30px;
@@ -242,7 +232,7 @@
             animation: float 10s ease-in-out infinite;
         }
 
-        /* About Section */
+        /* Section */
         .section {
             padding: 100px 0;
         }
@@ -280,7 +270,6 @@
             background-color: var(--secondary);
             box-shadow: 0 10px 30px var(--shadow);
             transition: transform 0.3s ease;
-            will-change: transform;
         }
 
         .about-text:hover {
@@ -306,7 +295,6 @@
             text-align: center;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px var(--shadow);
-            will-change: transform;
         }
 
         .skill-item:hover {
@@ -320,7 +308,7 @@
             color: var(--light);
         }
 
-        /* New Preview Styles */
+        /* Folder Preview Styles */
         .folder-preview {
             margin-bottom: 20px;
             border-radius: 10px;
@@ -378,22 +366,6 @@
             transition: transform 0.3s ease;
         }
 
-        .preview-grid .preview-img:nth-child(1) {
-            border-radius: 10px 0 0 0;
-        }
-
-        .preview-grid .preview-img:nth-child(2) {
-            border-radius: 0 10px 0 0;
-        }
-
-        .preview-grid .preview-img:nth-child(3) {
-            border-radius: 0 0 0 10px;
-        }
-
-        .preview-grid .preview-img:nth-child(4) {
-            border-radius: 0 0 10px 0;
-        }
-
         .certificate-preview {
             position: relative;
             width: 100%;
@@ -430,7 +402,7 @@
             color: #ffd700;
         }
 
-        /* Folder Styles */
+        /* Projects Grid */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -447,21 +419,12 @@
             overflow: hidden;
             border: 2px solid transparent;
             box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            will-change: transform;
         }
 
         .project-folder:hover {
             transform: translateY(-8px);
             border-color: var(--light);
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
-
-        .project-folder:hover .preview-img {
-            transform: scale(1.05);
-        }
-
-        .project-folder:hover .certificate-overlay {
-            opacity: 1;
         }
 
         .project-folder::before {
@@ -499,7 +462,7 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
 
-        /* Folder Modal Styles */
+        /* Folder Modal */
         .folder-modal {
             display: none;
             position: fixed;
@@ -542,10 +505,6 @@
             gap: 10px;
         }
 
-        .folder-header h2 i {
-            color: #ffd700;
-        }
-
         .folder-close {
             background: var(--accent);
             border: none;
@@ -556,7 +515,6 @@
             cursor: pointer;
             font-size: 1.2rem;
             transition: all 0.3s ease;
-            z-index: 2001;
         }
 
         .folder-close:hover {
@@ -599,43 +557,6 @@
         .file-item.image .file-icon { color: #4ecdc4; }
         .file-item.certificate .file-icon { color: #ffd700; }
 
-        .file-item h4 {
-            color: var(--light);
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-        }
-
-        .file-item .file-type {
-            color: var(--text);
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Scrollbar styling untuk folder body */
-        .folder-body::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .folder-body::-webkit-scrollbar-track {
-            background: var(--primary);
-            border-radius: 4px;
-        }
-
-        .folder-body::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 4px;
-        }
-
-        .folder-body::-webkit-scrollbar-thumb:hover {
-            background: var(--light);
-        }
-
         /* Contact Section */
         .contact-content {
             display: flex;
@@ -665,7 +586,41 @@
             transform: translateX(10px);
         }
 
-        /* Modal untuk file individual */
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            width: 40px;
+            text-align: center;
+        }
+
+        .contact-form {
+            flex: 1;
+            border-radius: 20px;
+            padding: 30px;
+            background-color: var(--secondary);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background-color: var(--primary);
+            color: var(--text);
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* File Modal */
         .file-modal {
             display: none;
             position: fixed;
@@ -717,7 +672,6 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            z-index: 2501;
         }
 
         .file-modal-close:hover {
@@ -742,44 +696,6 @@
             height: auto;
             object-fit: contain;
             border-radius: 8px;
-        }
-
-        .file-modal-body video {
-            background: #000;
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            width: 40px;
-            text-align: center;
-        }
-
-        .contact-form {
-            flex: 1;
-            border-radius: 20px;
-            padding: 30px;
-            background-color: var(--secondary);
-            box-shadow: 0 10px 30px var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            background-color: var(--primary);
-            color: var(--text);
-            border-radius: 10px;
-            font-size: 1rem;
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
         }
 
         /* Footer */
@@ -815,7 +731,7 @@
             box-shadow: 0 5px 15px var(--shadow);
         }
 
-        /* Animasi */
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -828,86 +744,51 @@
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
         }
 
-        /* Responsif */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
             }
-            
             .nav-links {
                 margin-top: 20px;
             }
-            
             .nav-links li {
                 margin: 0 10px;
             }
-            
-            .hero h1 {
-                font-size: clamp(1.8rem, 5vw, 3.5rem);
-            }
-            
             .about-content, .contact-content {
                 flex-direction: column;
             }
-            
             .skills {
                 grid-template-columns: 1fr;
             }
-            
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-            
             .folder-modal-content {
                 margin: 10% auto;
                 width: 95%;
             }
-            
             .folder-body {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                 gap: 15px;
                 padding: 20px;
             }
-            
-            .file-item {
-                padding: 15px;
-            }
-            
-            .file-icon {
-                font-size: 2rem;
-            }
-            
-            .file-modal-content {
-                width: 95%;
-                max-height: 85vh;
-            }
-            
-            .file-modal-body img,
-            .file-modal-body video {
-                max-height: 60vh;
-            }
-
             .folder-preview {
                 height: 150px;
             }
-
-            .preview-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
-        /* Animasi fade-in untuk elemen saat scroll */
         .fade-in-up {
             opacity: 0;
             transform: translateY(30px);
@@ -919,7 +800,6 @@
             transform: translateY(0);
         }
 
-        /* Partikel Background */
         #particles-js {
             position: fixed;
             width: 100%;
@@ -927,6 +807,351 @@
             top: 0;
             left: 0;
             z-index: -1;
+        }
+
+        /* ========== MUSIC PLAYER - DYNAMIC ISLAND STYLE ========== */
+        .music-island {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            z-index: 9998;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .dynamic-island {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            padding: 4px 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(85, 85, 85, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+        }
+
+        .dynamic-island.expanded {
+            border-radius: 20px;
+            padding: 14px;
+            background: rgba(26, 26, 26, 0.98);
+            flex-direction: column;
+            align-items: stretch;
+            cursor: default;
+            gap: 10px;
+            min-width: 260px;
+            max-width: 300px;
+        }
+
+        .music-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #555, #333);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #e0e0e0;
+        }
+
+        .track-info-mini {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .track-title-mini {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100px;
+        }
+
+        .track-artist-mini {
+            font-size: 0.6rem;
+            color: #aaa;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100px;
+        }
+
+        .play-pause-mini {
+            width: 26px;
+            height: 26px;
+            background: rgba(85, 85, 85, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            color: #e0e0e0;
+            font-size: 0.65rem;
+        }
+
+        .expanded-content {
+            max-height: 380px;
+            overflow-y: auto;
+        }
+
+        .album-art {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #333, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            max-height: 120px;
+            max-width: 120px;
+            margin: 0 auto;
+        }
+
+        .album-art img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .album-art i {
+            font-size: 1.8rem;
+            color: #e0e0e0;
+            opacity: 0.5;
+        }
+
+        .track-info-expanded {
+            text-align: center;
+        }
+
+        .track-title-expanded {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .track-artist-expanded {
+            font-size: 0.7rem;
+            color: #aaa;
+        }
+
+        .progress-container {
+            margin: 6px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 3px;
+            background: rgba(85, 85, 85, 0.3);
+            border-radius: 2px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #e0e0e0, #aaa);
+            border-radius: 2px;
+        }
+
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3px;
+            font-size: 0.55rem;
+            color: #aaa;
+        }
+
+        .controls-expanded {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .control-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(85, 85, 85, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            color: #e0e0e0;
+            font-size: 0.85rem;
+        }
+
+        .control-btn.play-btn {
+            background: linear-gradient(135deg, #555, #333);
+            width: 44px;
+            height: 44px;
+            font-size: 1rem;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .volume-icon {
+            font-size: 0.7rem;
+            color: #aaa;
+            cursor: pointer;
+            width: 20px;
+        }
+
+        .volume-slider {
+            flex: 1;
+            height: 3px;
+            background: rgba(85, 85, 85, 0.3);
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .volume-fill {
+            width: 70%;
+            height: 100%;
+            background: linear-gradient(90deg, #e0e0e0, #aaa);
+            border-radius: 2px;
+        }
+
+        .playlist {
+            max-height: 180px;
+            overflow-y: auto;
+            margin-top: 8px;
+            border-top: 1px solid rgba(85, 85, 85, 0.3);
+            padding-top: 8px;
+        }
+
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 4px;
+        }
+
+        .playlist-item.active {
+            background: rgba(85, 85, 85, 0.5);
+        }
+
+        .playlist-item .playlist-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(85, 85, 85, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .playlist-item .playlist-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .playlist-item .playlist-title {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #e0e0e0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .playlist-item .playlist-artist {
+            font-size: 0.65rem;
+            color: #aaa;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .now-playing-badge {
+            font-size: 0.55rem;
+            color: #aaa;
+            text-align: center;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .now-playing-badge i {
+            font-size: 0.4rem;
+            animation: pulse 1.5s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .playlist::-webkit-scrollbar,
+        .expanded-content::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .playlist::-webkit-scrollbar-track,
+        .expanded-content::-webkit-scrollbar-track {
+            background: rgba(85, 85, 85, 0.2);
+            border-radius: 2px;
+        }
+
+        .playlist::-webkit-scrollbar-thumb,
+        .expanded-content::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .music-island {
+                bottom: 12px;
+                right: 12px;
+            }
+            .dynamic-island.expanded {
+                position: fixed;
+                bottom: 12px;
+                right: 12px;
+                left: 12px;
+                width: auto;
+                max-width: none;
+                min-width: auto;
+            }
+            .playlist-item {
+                padding: 10px 12px;
+            }
+            .playlist-item .playlist-icon {
+                width: 36px;
+                height: 36px;
+            }
+            .control-btn {
+                width: 42px;
+                height: 42px;
+            }
+            .control-btn.play-btn {
+                width: 52px;
+                height: 52px;
+            }
         }
     </style>
 </head>
@@ -941,10 +1166,8 @@
 </div>
 
 <body>
-    <!-- Partikel Background -->
     <div id="particles-js"></div>
 
-    <!-- Header -->
     <header>
         <div class="container">
             <nav class="navbar">
@@ -959,22 +1182,18 @@
         </div>
     </header>
 
-    <!--image profile-->
     <section class="hero" id="home">
         <div class="hero-content">
-            <img src="https://image2url.com/r2/default/images/1775695839901-6c512051-e25b-41d5-8116-707c07da0e0a.png" alt="Naufal Dhiyaul Haq - Professional Designer and Video Editor" class="profile-img" loading="lazy" width="150" height="150" />
+            <img src="https://image2url.com/r2/default/images/1775695839901-6c512051-e25b-41d5-8116-707c07da0e0a.png" alt="Naufal Dhiyaul Haq" class="profile-img" loading="lazy" width="150" height="150" />
             <h1>Naufal Dhiyaul Haq</h1>
             <p>Design Graphic | Video Editor | Drawing Engineering | Social Media Management</p>
             <a href="#projects" class="btn">Lihat Project Saya</a>
         </div>
-        
-        <!-- Background Shapes -->
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
         <div class="shape shape-3"></div>
     </section>
 
-    <!-- About Section -->
     <section class="section" id="about">
         <div class="container">
             <h2 class="section-title">Tentang Saya</h2>
@@ -1009,23 +1228,17 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section class="section" id="projects">
         <div class="container">
             <h2 class="section-title">Project & Certificate</h2>
             <div class="projects-grid">
-
-                <!-- Project 1 - Video Editing -->
                 <div class="project-folder" onclick="openFolder('project1')">
                     <div class="folder-preview">
                         <div class="preview-thumbnail">
-                            <!-- Preview dari video pertama -->
                             <video muted loop class="preview-media">
                                 <source src="https://res.cloudinary.com/dgnenfdzf/video/upload/v1759144075/IMG_3069_tqgrlo.mov" type="video/mp4">
                             </video>
-                            <div class="play-overlay">
-                                <i class="fas fa-play-circle"></i>
-                            </div>
+                            <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
                         </div>
                     </div>
                     <div class="folder-content">
@@ -1035,19 +1248,13 @@
                     </div>
                 </div>
 
-                <!-- Project 2 - Design Graphic -->
                 <div class="project-folder" onclick="openFolder('project2')">
                     <div class="folder-preview">
                         <div class="preview-grid">
-                            <!-- Preview 4 gambar pertama -->
-                            <img src="https://image2url.com/images/1765731930920-e72d2b37-b362-4d4b-8630-1c0584a1530e.png" 
-                                 alt="Starbucks Coffe" class="preview-img">
-                            <img src="https://image2url.com/images/1765732262177-04817eba-1071-4db2-a09d-65dee13ad913.jpg" 
-                                 alt="Creative Recruitment" class="preview-img">
-                            <img src="https://image2url.com/images/1759141304154-1a6105f1-8210-4376-a35f-a8c36110ce21.png" 
-                                 alt="Frame Instagram" class="preview-img">
-                            <img src="https://image2url.com/images/1763485750663-15f3aeab-13a3-40dc-969b-4be1954e3d9c.png" 
-                                 alt="Fashion Design" class="preview-img">
+                            <img src="https://image2url.com/images/1765731930920-e72d2b37-b362-4d4b-8630-1c0584a1530e.png" alt="Starbucks Coffe" class="preview-img">
+                            <img src="https://image2url.com/images/1765732262177-04817eba-1071-4db2-a09d-65dee13ad913.jpg" alt="Creative Recruitment" class="preview-img">
+                            <img src="https://image2url.com/images/1759141304154-1a6105f1-8210-4376-a35f-a8c36110ce21.png" alt="Frame Instagram" class="preview-img">
+                            <img src="https://image2url.com/images/1763485750663-15f3aeab-13a3-40dc-969b-4be1954e3d9c.png" alt="Fashion Design" class="preview-img">
                         </div>
                     </div>
                     <div class="folder-content">
@@ -1057,17 +1264,12 @@
                     </div>
                 </div>
 
-                <!-- Project 3 - Frontend Developer -->
                 <div class="project-folder" onclick="openFolder('project3')">
                     <div class="folder-preview">
                         <div class="preview-grid">
-                            <!-- Preview website screenshots -->
-                            <img src="https://image2url.com/images/1763482306786-e5c211c8-fe47-4b38-9afd-810e641afa43.png" 
-                                 alt="Zhalecth Website" class="preview-img">
-                            <img src="https://image2url.com/images/1763914171922-89906b52-f778-46c7-b418-bc57b2b555fe.png" 
-                                 alt="Aneka Risol Website" class="preview-img">
-                            <img src="https://image2url.com/images/1764605936755-9088d51d-d10b-45eb-811b-48e8ad6f0e50.png" 
-                                 alt="SukaLiburanID Website" class="preview-img">
+                            <img src="https://image2url.com/images/1763482306786-e5c211c8-fe47-4b38-9afd-810e641afa43.png" alt="Zhalecth Website" class="preview-img">
+                            <img src="https://image2url.com/images/1763914171922-89906b52-f778-46c7-b418-bc57b2b555fe.png" alt="Aneka Risol Website" class="preview-img">
+                            <img src="https://image2url.com/images/1764605936755-9088d51d-d10b-45eb-811b-48e8ad6f0e50.png" alt="SukaLiburanID Website" class="preview-img">
                         </div>
                     </div>
                     <div class="folder-content">
@@ -1077,17 +1279,11 @@
                     </div>
                 </div>
 
-                <!-- Project 4 - Certificate -->
                 <div class="project-folder" onclick="openFolder('project4')">
                     <div class="folder-preview">
                         <div class="certificate-preview">
-                            <!-- Preview sertifikat pertama -->
-                            <img src="https://image2url.com/images/1759635388386-b0a94e17-5f97-481e-a1b0-0c196d82533c.png" 
-                                 alt="Osis Organization" class="certificate-img">
-                            <div class="certificate-overlay">
-                                <i class="fas fa-award"></i>
-                                <span>+6 more</span>
-                            </div>
+                            <img src="https://image2url.com/images/1759635388386-b0a94e17-5f97-481e-a1b0-0c196d82533c.png" alt="Osis Organization" class="certificate-img">
+                            <div class="certificate-overlay"><i class="fas fa-award"></i><span>+6 more</span></div>
                         </div>
                     </div>
                     <div class="folder-content">
@@ -1096,33 +1292,25 @@
                         <div class="file-count">7 Certificates</div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- ================== FOLDER MODALS ================== -->
-    <!-- Project 1 Folder -->
+    <!-- Folder Modals -->
     <div id="project1-folder" class="folder-modal">
         <div class="folder-modal-content">
             <div class="folder-header">
                 <h2><i class="fas fa-folder-open"></i> Video Editing Projects</h2>
-                <button class="folder-close" onclick="closeFolder('project1')">
-                    <i class="fas fa-times"></i>
-                </button>
+                <button class="folder-close" onclick="closeFolder('project1')"><i class="fas fa-times"></i></button>
             </div>
             <div class="folder-body">
                 <div class="file-item video" onclick="openFileModal('https://res.cloudinary.com/dgnenfdzf/video/upload/v1759144075/IMG_3069_tqgrlo.mov', 'video', 'Project Video 1')">
-                    <div class="file-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
+                    <div class="file-icon"><i class="fas fa-video"></i></div>
                     <h4>Project Video 1</h4>
                     <div class="file-type">MP4 Video</div>
                 </div>
                 <div class="file-item video" onclick="openFileModal('https://res.cloudinary.com/dgnenfdzf/video/upload/v1759149289/IMG_0303_zd6sgu.mp4', 'video', 'Project Video 2')">
-                    <div class="file-icon">
-                        <i class="fas fa-film"></i>
-                    </div>
+                    <div class="file-icon"><i class="fas fa-film"></i></div>
                     <h4>Project Video 2</h4>
                     <div class="file-type">MP4 Video</div>
                 </div>
@@ -1130,171 +1318,122 @@
         </div>
     </div>
 
-    <!-- Project 2 Folder -->
     <div id="project2-folder" class="folder-modal">
         <div class="folder-modal-content">
             <div class="folder-header">
                 <h2><i class="fas fa-folder-open"></i> Design Graphic Projects</h2>
-                <button class="folder-close" onclick="closeFolder('project2')">
-                    <i class="fas fa-times"></i>
-                </button>
+                <button class="folder-close" onclick="closeFolder('project2')"><i class="fas fa-times"></i></button>
             </div>
             <div class="folder-body">
                 <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1765731930920-e72d2b37-b362-4d4b-8630-1c0584a1530e.png', 'image', 'Starbucks Coffe')">
-                    <div class="file-icon">
-                        <i class="fas fa-image"></i>
-                    </div>
+                    <div class="file-icon"><i class="fas fa-image"></i></div>
                     <h4>Starbucks Coffe</h4>
                     <div class="file-type">JPEG Image</div>
                 </div>
                 <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1765732262177-04817eba-1071-4db2-a09d-65dee13ad913.jpg', 'image', 'Creative Recruitment')">
-                    <div class="file-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
+                    <div class="file-icon"><i class="fas fa-palette"></i></div>
                     <h4>Creative Recruitment</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
-                     <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1765874414150-27eaa97f-b281-4f41-82f1-ff77018f4ac7.png', 'image', 'Thumbnail Youtube')">
-                    <div class="file-icon">
-                        <i class="fas fa-upload"></i>
-                    </div>
+                <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1765874414150-27eaa97f-b281-4f41-82f1-ff77018f4ac7.png', 'image', 'Thumbnail Youtube')">
+                    <div class="file-icon"><i class="fas fa-upload"></i></div>
                     <h4>Thumbnail Youtube</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
-                     <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1765868672350-7c7a7920-9407-4a39-83e1-9e4f042eef00.png', 'image', 'Thumbnail Youtube 2')">
-                    <div class="file-icon">
-                        <i class="fas fa-television"></i>
-                    </div>
+                <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1765868672350-7c7a7920-9407-4a39-83e1-9e4f042eef00.png', 'image', 'Thumbnail Youtube 2')">
+                    <div class="file-icon"><i class="fas fa-television"></i></div>
                     <h4>Thumbnail Youtube 2</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
-
-                 <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1765868900039-c551fe35-ac81-4301-a80b-d4ce68315e95.png', 'image', 'Thumbnail Youtube 3')">
-                    <div class="file-icon">
-                        <i class="fas fa-tags"></i>
-                    </div>
+                <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1765868900039-c551fe35-ac81-4301-a80b-d4ce68315e95.png', 'image', 'Thumbnail Youtube 3')">
+                    <div class="file-icon"><i class="fas fa-tags"></i></div>
                     <h4>Thumbnail Youtube 3</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
-
-                                 <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1765868933952-38508c34-b5a5-4e30-9f38-4c49e406ab8c.png', 'image', 'Thumbnail Youtube 4')">
-                    <div class="file-icon">
-                        <i class="fas fa-file-image"></i>
-                    </div>
+                <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1765868933952-38508c34-b5a5-4e30-9f38-4c49e406ab8c.png', 'image', 'Thumbnail Youtube 4')">
+                    <div class="file-icon"><i class="fas fa-file-image"></i></div>
                     <h4>Thumbnail Youtube 4</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
-
                 <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1759141304154-1a6105f1-8210-4376-a35f-a8c36110ce21.png', 'image', 'Frame Instagram Story')">
-                    
-                    <div class="file-icon">
-                        <i class="fas fa-object-group"></i>
-                    </div>
+                    <div class="file-icon"><i class="fas fa-object-group"></i></div>
                     <h4>Frame Instagram Story</h4>
                     <div class="file-type">JPEG Image</div>
                 </div>
-                  <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1763485750663-15f3aeab-13a3-40dc-969b-4be1954e3d9c.png', 'image', 'Fashion Design')">
-                    <div class="file-icon">
-                        <i class="fas fa-shirt"></i>
-                    </div>
-                    <h4>Fashion Daesign</h4>
+                <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1763485750663-15f3aeab-13a3-40dc-969b-4be1954e3d9c.png', 'image', 'Fashion Design')">
+                    <div class="file-icon"><i class="fas fa-shirt"></i></div>
+                    <h4>Fashion Design</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
             </div>
         </div>
     </div>
 
-<!-- Project 3 Folder -->
-<div id="project3-folder" class="folder-modal">
-    <div class="folder-modal-content">
-        <div class="folder-header">
-            <h2><i class="fas fa-folder-open"></i> Frontend Developer Projects</h2>
-            <button class="folder-close" onclick="closeFolder('project3')">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="folder-body">
-            <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1763482306786-e5c211c8-fe47-4b38-9afd-810e641afa43.png', 'image', 'Zhalecth Website')">
-                <div class="file-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <h4>Website Clothing Brand</h4>
-                <div class="file-type">HTML,CSS</div>
+    <div id="project3-folder" class="folder-modal">
+        <div class="folder-modal-content">
+            <div class="folder-header">
+                <h2><i class="fas fa-folder-open"></i> Frontend Developer Projects</h2>
+                <button class="folder-close" onclick="closeFolder('project3')"><i class="fas fa-times"></i></button>
             </div>
-            <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1763914171922-89906b52-f778-46c7-b418-bc57b2b555fe.png', 'image', 'Aneka Risol Website')">
-                <div class="file-icon">
-                    <i class="fas fa-sitemap"></i>
+            <div class="folder-body">
+                <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1763482306786-e5c211c8-fe47-4b38-9afd-810e641afa43.png', 'image', 'Zhalecth Website')">
+                    <div class="file-icon"><i class="fas fa-code"></i></div>
+                    <h4>Website Clothing Brand</h4>
+                    <div class="file-type">HTML,CSS</div>
                 </div>
-                <h4>Website UMKM Aneka Risol</h4>
-                <div class="file-type">HTML,CSS</div>
-            </div>
-            <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1764605936755-9088d51d-d10b-45eb-811b-48e8ad6f0e50.png', 'image', 'SukaLiburanID Website')">
-                <div class="file-icon">
-                    <i class="fas fa-laptop"></i>
+                <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1763914171922-89906b52-f778-46c7-b418-bc57b2b555fe.png', 'image', 'Aneka Risol Website')">
+                    <div class="file-icon"><i class="fas fa-sitemap"></i></div>
+                    <h4>Website UMKM Aneka Risol</h4>
+                    <div class="file-type">HTML,CSS</div>
                 </div>
-                <h4>Website SukaLiburanID</h4>
-                <div class="file-type">HTML,PHP,CSS</div>
+                <div class="file-item image" onclick="openFileModal('https://image2url.com/images/1764605936755-9088d51d-d10b-45eb-811b-48e8ad6f0e50.png', 'image', 'SukaLiburanID Website')">
+                    <div class="file-icon"><i class="fas fa-laptop"></i></div>
+                    <h4>Website SukaLiburanID</h4>
+                    <div class="file-type">HTML,PHP,CSS</div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-    <!-- Project 4 Folder -->
     <div id="project4-folder" class="folder-modal">
         <div class="folder-modal-content">
             <div class="folder-header">
-                <h2><i class="fas fa-folder-open"></i> Certificates</h2>
-                <button class="folder-close" onclick="closeFolder('project4')">
-                    <i class="fas fa-times"></i>
-                </button>
+                <h2><i class="fas-folder-open"></i> Certificates</h2>
+                <button class="folder-close" onclick="closeFolder('project4')"><i class="fas fa-times"></i></button>
             </div>
             <div class="folder-body">
                 <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1759635388386-b0a94e17-5f97-481e-a1b0-0c196d82533c.png', 'image', 'Certificate 1')">
-                    <div class="file-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
+                    <div class="file-icon"><i class="fas fa-award"></i></div>
                     <h4>Osis Organization</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
                 <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1759635452237-6d14018c-e14a-49a9-aefe-296d6b1972ff.png', 'image', 'Certificate 2')">
-                    <div class="file-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
+                    <div class="file-icon"><i class="fas fa-certificate"></i></div>
                     <h4>PT. Zeno Alumi Indonesia</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
                 <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1759635504971-d31c4202-c0c5-4d60-b34f-5d91e659287d.png', 'image', 'Certificate 3')">
-                    <div class="file-icon">
-                        <i class="fas fa-medal"></i>
-                    </div>
+                    <div class="file-icon"><i class="fas fa-medal"></i></div>
                     <h4>PT. Formosa Teknologi Sentral</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
                 <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1759635566437-91d2dff1-3d48-4af6-a21b-726722804490.png', 'image', 'Certificate 4')">
-                    <div class="file-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
+                    <div class="file-icon"><i class="fas fa-trophy"></i></div>
                     <h4>PT. Krakatau Sarana Properti</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
                 <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1763478326687-b7279178-5334-4085-a6ea-15463b3a3b80.png', 'image', 'Certificate 5')">
-                    <div class="file-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
+                    <div class="file-icon"><i class="fas fa-star"></i></div>
                     <h4>Dicoding Academy</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
-                                <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1764604440739-bcafefb2-5db9-4499-912e-7f35aee850cb.png', 'image', 'Certificate 6')">
-                    <div class="file-icon">
-                        <i class="fas fa-highlighter"></i>
-                    </div>
+                <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1764604440739-bcafefb2-5db9-4499-912e-7f35aee850cb.png', 'image', 'Certificate 6')">
+                    <div class="file-icon"><i class="fas fa-highlighter"></i></div>
                     <h4>Canva For Work</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
-                        <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1764604362172-411e4be5-282d-4675-a0be-6835abc07e74.png', 'image', 'Certificate 7')">
-                    <div class="file-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
+                <div class="file-item certificate" onclick="openFileModal('https://image2url.com/images/1764604362172-411e4be5-282d-4675-a0be-6835abc07e74.png', 'image', 'Certificate 7')">
+                    <div class="file-icon"><i class="fas fa-paint-brush"></i></div>
                     <h4>Graphic Design Essentials</h4>
                     <div class="file-type">PNG Image</div>
                 </div>
@@ -1302,65 +1441,31 @@
         </div>
     </div>
 
-    <!-- File Modal untuk menampilkan file individual -->
     <div id="file-modal" class="file-modal">
         <div class="file-modal-content">
             <div class="file-modal-header">
                 <div class="file-modal-title" id="file-modal-title">File Preview</div>
-                <button class="file-modal-close" onclick="closeFileModal()">
-                    <i class="fas fa-times"></i>
-                </button>
+                <button class="file-modal-close" onclick="closeFileModal()"><i class="fas fa-times"></i></button>
             </div>
-            <div class="file-modal-body" id="file-modal-body">
-                <!-- Konten akan dimuat di sini -->
-            </div>
+            <div class="file-modal-body" id="file-modal-body"></div>
         </div>
     </div>
 
-    <!-- Contact Section -->
     <section class="section" id="contact">
         <div class="container">
             <h2 class="section-title">Hubungi Saya</h2>
             <div class="contact-content">
                 <div class="contact-info fade-in-up">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Lokasi</h3>
-                            <p>Serang, Indonesia</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>naufaldhwork@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Telepon</h3>
-                            <p>+6289530076818</p>
-                        </div>
-                    </div>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><div><h3>Lokasi</h3><p>Serang, Indonesia</p></div></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><div><h3>Email</h3><p>naufaldhwork@gmail.com</p></div></div>
+                    <div class="contact-item"><i class="fas fa-phone"></i><div><h3>Telepon</h3><p>+6289530076818</p></div></div>
                 </div>
-
-                <!-- Form Contact dengan Formspree -->
                 <div class="contact-form fade-in-up">
                     <form action="https://formspree.io/f/myznenzw" method="POST" id="contact-form">
-                        <div class="form-group">
-                            <input type="text" name="nama" class="form-control" placeholder="Nama Anda" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Email Anda" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="subjek" class="form-control" placeholder="Subjek" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="pesan" class="form-control" placeholder="Pesan Anda" required></textarea>
-                        </div>
+                        <div class="form-group"><input type="text" name="nama" class="form-control" placeholder="Nama Anda" required></div>
+                        <div class="form-group"><input type="email" name="email" class="form-control" placeholder="Email Anda" required></div>
+                        <div class="form-group"><input type="text" name="subjek" class="form-control" placeholder="Subjek" required></div>
+                        <div class="form-group"><textarea name="pesan" class="form-control" placeholder="Pesan Anda" required></textarea></div>
                         <button type="submit" class="btn" id="submit-btn">Kirim Pesan</button>
                     </form>
                 </div>
@@ -1368,11 +1473,10 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/naufal-dhiyaul-haq-035733384?utm_source=share_via&utm_content=profile&utm_medium=member_ios" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/naufal-dhiyaul-haq-035733384" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://github.com/Zyvnxx" class="social-link"><i class="fab fa-github"></i></a>
                 <a href="https://www.instagram.com/nfalldyx/" class="social-link"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="social-link"><i class="fab fa-x"></i></a>
@@ -1381,1108 +1485,272 @@
         </div>
     </footer>
 
-    <!-- Script untuk partikel -->
+    <!-- MUSIC PLAYER DYNAMIC ISLAND -->
+    <div class="music-island">
+        <div class="dynamic-island" id="dynamicIsland">
+            <div class="music-icon" id="musicIcon"><i class="fas fa-music"></i></div>
+            <div class="track-info-mini">
+                <div class="track-title-mini" id="miniTitle">No music</div>
+                <div class="track-artist-mini" id="miniArtist">Select a track</div>
+            </div>
+            <button class="play-pause-mini" id="playPauseMini"><i class="fas fa-play"></i></button>
+            
+            <div class="expanded-content" style="display: none;">
+                <div class="album-art" id="albumArt"><i class="fas fa-headphones"></i></div>
+                <div class="track-info-expanded">
+                    <div class="track-title-expanded" id="expandedTitle">No music</div>
+                    <div class="track-artist-expanded" id="expandedArtist">Select a track</div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+                    <div class="time-info"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+                </div>
+                <div class="controls-expanded">
+                    <button class="control-btn" id="prevBtn"><i class="fas fa-backward"></i></button>
+                    <button class="control-btn play-btn" id="playPauseExpanded"><i class="fas fa-play"></i></button>
+                    <button class="control-btn" id="nextBtn"><i class="fas fa-forward"></i></button>
+                </div>
+                <div class="volume-control">
+                    <i class="fas fa-volume-up volume-icon" id="volumeIcon"></i>
+                    <div class="volume-slider" id="volumeSlider"><div class="volume-fill" id="volumeFill"></div></div>
+                </div>
+                <div class="playlist" id="playlist"></div>
+                <div class="now-playing-badge"><i class="fas fa-circle"></i><span>Dynamic Island Player</span></div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Inisialisasi partikel
+        // Particles
         particlesJS("particles-js", {
             particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: "#e0e0e0"
-                },
-                shape: {
-                    type: "circle",
-                    stroke: {
-                        width: 0,
-                        color: "#000000"
-                    }
-                },
-                opacity: {
-                    value: 0.5,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 2,
-                        size_min: 0.1,
-                        sync: false
-                    }
-                },
-                line_linked: {
-                    enable: false
-                },
-                move: {
-                    enable: true,
-                    speed: 1,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false,
-                    attract: {
-                        enable: false,
-                        rotateX: 600,
-                        rotateY: 1200
-                    }
-                }
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#e0e0e0" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+                size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
+                line_linked: { enable: false },
+                move: { enable: true, speed: 1, direction: "none", random: true, out_mode: "out" }
             },
             interactivity: {
                 detect_on: "canvas",
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: "repulse"
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: "push"
-                    },
-                    resize: true
-                },
-                modes: {
-                    repulse: {
-                        distance: 100,
-                        duration: 0.4
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
-                }
-            },
-            retina_detect: true
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } }
+            }
         });
 
-        // Smooth scrolling untuk navigasi
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId === '#' || !targetId) return;
                 const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+                if (targetElement) window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
             });
         });
 
-        // Animasi saat scroll (IntersectionObserver)
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        // Intersection Observer
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 
-        document.querySelectorAll('.fade-in-up').forEach(el => {
-            observer.observe(el);
-        });
-
-        // JS tapping icon effect
-        document.addEventListener('click', function(e) {
-            let love = document.createElement('div');
-            love.innerHTML = '👆';
-            love.style.position = 'absolute';
-            love.style.left = e.pageX + 'px';
-            love.style.top = e.pageY + 'px';
-            love.style.fontSize = '24px';
-            love.style.opacity = 1;
-            love.style.transition = 'top 2s ease-out, opacity 2s';
-            love.style.zIndex = '9999';
-            document.body.appendChild(love);
-
-            setTimeout(() => {
-                love.style.top = (e.pageY - 100) + 'px';
-                love.style.opacity = 0;
-            }, 10);
-
-            setTimeout(() => {
-                if (love.parentNode) document.body.removeChild(love);
-            }, 2000);
-        });
-
-        // Loading screen hide
+        // Loading screen
         window.addEventListener("load", () => {
-            const loadingScreen = document.getElementById("loading-screen");
-            if (loadingScreen) {
-                setTimeout(() => {
-                    loadingScreen.classList.add("hidden");
-                }, 1000);
-            }
+            setTimeout(() => document.getElementById("loading-screen")?.classList.add("hidden"), 1000);
         });
 
-        // Auto-update copyright year
-        const yearEl = document.getElementById('year');
-        if (yearEl) yearEl.textContent = new Date().getFullYear();
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-        // ===== Folder functionality =====
+        // Folder functions
         function openFolder(projectId) {
             const modal = document.getElementById(projectId + '-folder');
-            if (modal) {
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-            }
+            if (modal) { modal.style.display = 'block'; document.body.style.overflow = 'hidden'; }
         }
-
         function closeFolder(projectId) {
             const modal = document.getElementById(projectId + '-folder');
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
+            if (modal) { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }
         }
-
-        // File modal functionality
         function openFileModal(fileUrl, fileType, fileName) {
             const modal = document.getElementById('file-modal');
             const modalBody = document.getElementById('file-modal-body');
             const modalTitle = document.getElementById('file-modal-title');
-            
             if (!modal || !modalBody || !modalTitle) return;
-            
-            // Set modal title
             modalTitle.textContent = fileName || 'File Preview';
-            
-            // Clear previous content
             modalBody.innerHTML = '';
-            
-            // Create content based on file type
             if (fileType === 'video') {
                 const video = document.createElement('video');
                 video.src = fileUrl;
                 video.controls = true;
                 video.style.maxWidth = '100%';
                 video.style.maxHeight = '70vh';
-                video.style.width = 'auto';
-                video.style.height = 'auto';
-                video.style.objectFit = 'contain';
                 modalBody.appendChild(video);
-                
-                // Auto play video
-                video.play().catch(e => {
-                    console.log('Autoplay prevented:', e);
-                });
+                video.play().catch(e => console.log(e));
             } else if (fileType === 'image') {
                 const img = document.createElement('img');
                 img.src = fileUrl;
-                img.alt = fileName || 'Project Image';
                 img.style.maxWidth = '100%';
                 img.style.maxHeight = '70vh';
-                img.style.width = 'auto';
-                img.style.height = 'auto';
-                img.style.objectFit = 'contain';
                 modalBody.appendChild(img);
             }
-            
-            // Show modal
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            
-            // Close folder
-            const currentFolder = getCurrentFolder(fileUrl);
-            if (currentFolder) {
-                closeFolder(currentFolder);
-            }
         }
-
-        function getCurrentFolder(fileUrl) {
-            if (fileUrl.includes('project1')) return 'project1';
-            if (fileUrl.includes('project2')) return 'project2';
-            if (fileUrl.includes('project3')) return 'project3';
-            if (fileUrl.includes('project4')) return 'project4';
-            return null;
-        }
-
         function closeFileModal() {
             const modal = document.getElementById('file-modal');
             if (modal) {
                 modal.style.display = 'none';
                 document.body.style.overflow = 'auto';
-                
-                // Stop any playing videos
-                const videos = modal.querySelectorAll('video');
-                videos.forEach(video => {
-                    video.pause();
-                    video.currentTime = 0;
-                });
+                modal.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
             }
         }
-
-        // Close modals when clicking outside
-        document.addEventListener('click', function(e) {
-            // Close folder modals
-            if (e.target.classList.contains('folder-modal')) {
-                const modalId = e.target.id.replace('-folder', '');
-                closeFolder(modalId);
-            }
-            
-            // Close file modal
-            if (e.target.classList.contains('file-modal')) {
-                closeFileModal();
-            }
+        document.addEventListener('click', e => {
+            if (e.target.classList.contains('folder-modal')) closeFolder(e.target.id.replace('-folder', ''));
+            if (e.target.classList.contains('file-modal')) closeFileModal();
         });
-
-        // Close modals with Escape key
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
-                // Close folder modals
-                document.querySelectorAll('.folder-modal').forEach(modal => {
-                    if (modal.style.display === 'block') {
-                        const modalId = modal.id.replace('-folder', '');
-                        closeFolder(modalId);
-                    }
-                });
-                
-                // Close file modal
+                document.querySelectorAll('.folder-modal').forEach(m => { if (m.style.display === 'block') closeFolder(m.id.replace('-folder', '')); });
                 closeFileModal();
             }
         });
 
-        // Form validation & UX
-        const contactForm = document.getElementById('contact-form');
-        const submitBtn = document.getElementById('submit-btn');
-        
-        if (contactForm && submitBtn) {
-            contactForm.addEventListener('submit', function(e) {
-                const email = this.querySelector('input[type="email"]');
-                if (!email.value.includes('@')) {
-                    e.preventDefault();
-                    email.focus();
-                    email.style.border = '2px solid #ff6b6b';
-                    setTimeout(() => {
-                        email.style.border = 'none';
-                    }, 3000);
-                    return;
-                }
-                
-                // Loading state
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
-                submitBtn.disabled = true;
-                
-                // Reset setelah 5 detik (fallback)
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 5000);
-            });
+        // ========== MUSIC PLAYER SCRIPT ==========
+        let playlist = [
+            { title: "Nina", artist: "Feast", url: "https://videotourl.com/audio/1775696680006-2cc9ecee-36c9-4bf9-a88d-8b4556a365ff.mp3", cover: "https://sukabumihitz.com/wp-content/uploads/2025/01/Screenshot-19.png" },
+            { title: "Gemilang", artist: "Perunggu", url: "https://videotourl.com/audio/1775696883250-fad009be-4133-4a11-8cbe-6708f8ae3be5.mp3", cover: "https://images.genius.com/b164971f3645612bb5016fa6e3155579.1000x1000x1.png" },
+            { title: "Membasuh", artist: "Hindia", url: "https://videotourl.com/audio/1775697754706-f3acc2b9-26ff-4fbd-85f6-7a6eb2dea97d.mp3", cover: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSbgPL4auMmC-EaoVwW_26rVV0wSsLjX5bMH03PLYyzsZyWH54zPG1hLeDq6DjZbo7yawko_lSRLQ-NRkMa6YwP4qVymZjkS5VtCO35wnsrtkl6ubLdR3m4lmuXnwnmOs3fMLTAu7QT62M5kEkyNuBBSrHbtBtJH0sP_tqoJHP_t2gEomjiVaaYeaPz0A/s500/artworks-fpT6bbk7KwNi1mIU-tLZXkg-t500x500.jpg" }
+        ];
+
+        function savePlaylist() { localStorage.setItem('musicPlaylist', JSON.stringify(playlist)); }
+        function loadPlaylist() {
+            const saved = localStorage.getItem('musicPlaylist');
+            if (saved) { try { const p = JSON.parse(saved); if (p && p.length) playlist = p; } catch(e) {} }
+            savePlaylist();
         }
 
-        // Preload critical resources
-        window.addEventListener('load', function() {
-            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-            console.log('Page load time:', loadTime);
+        let currentTrack = 0, isPlaying = false, isExpanded = false;
+        const audio = new Audio();
+        const elements = {
+            dynamicIsland: document.getElementById('dynamicIsland'),
+            miniTitle: document.getElementById('miniTitle'), miniArtist: document.getElementById('miniArtist'),
+            expandedTitle: document.getElementById('expandedTitle'), expandedArtist: document.getElementById('expandedArtist'),
+            albumArt: document.getElementById('albumArt'), playPauseMini: document.getElementById('playPauseMini'),
+            playPauseExpanded: document.getElementById('playPauseExpanded'), prevBtn: document.getElementById('prevBtn'),
+            nextBtn: document.getElementById('nextBtn'), progressBar: document.getElementById('progressBar'),
+            progressFill: document.getElementById('progressFill'), currentTime: document.getElementById('currentTime'),
+            duration: document.getElementById('duration'), volumeSlider: document.getElementById('volumeSlider'),
+            volumeFill: document.getElementById('volumeFill'), volumeIcon: document.getElementById('volumeIcon'),
+            playlistContainer: document.getElementById('playlist'), expandedContent: document.querySelector('.expanded-content'),
+            musicIcon: document.getElementById('musicIcon')
+        };
+
+        function loadTrack(index) {
+            if (!playlist.length) return;
+            currentTrack = Math.min(index, playlist.length - 1);
+            const track = playlist[currentTrack];
+            audio.src = track.url;
+            audio.load();
+            elements.miniTitle.textContent = track.title || 'Untitled';
+            elements.miniArtist.textContent = track.artist || 'Unknown';
+            elements.expandedTitle.textContent = track.title || 'Untitled';
+            elements.expandedArtist.textContent = track.artist || 'Unknown';
+            if (track.cover && track.cover.startsWith('http')) elements.albumArt.innerHTML = `<img src="${track.cover}" alt="${track.title}">`;
+            else elements.albumArt.innerHTML = '<i class="fas fa-music"></i>';
+            updatePlaylistUI();
+            elements.progressFill.style.width = '0%';
+            elements.currentTime.textContent = '0:00';
+            if (isPlaying) audio.play().catch(e => console.log(e));
+            updatePlayButtons();
+        }
+
+        function updatePlayButtons() {
+            const icon = isPlaying ? 'fa-pause' : 'fa-play';
+            elements.playPauseMini.querySelector('i').className = `fas ${icon}`;
+            elements.playPauseExpanded.querySelector('i').className = `fas ${icon}`;
+        }
+
+        function togglePlay() {
+            if (!playlist.length) return;
+            if (!audio.src) loadTrack(0);
+            if (isPlaying) audio.pause();
+            else audio.play().catch(e => console.log(e));
+            isPlaying = !isPlaying;
+            updatePlayButtons();
+        }
+
+        function nextTrack() { if (playlist.length) { currentTrack = (currentTrack + 1) % playlist.length; isPlaying = true; loadTrack(currentTrack); audio.play(); } }
+        function prevTrack() { if (playlist.length) { currentTrack = (currentTrack - 1 + playlist.length) % playlist.length; isPlaying = true; loadTrack(currentTrack); audio.play(); } }
+
+        function updateProgress() {
+            if (audio.duration) {
+                elements.progressFill.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
+                elements.currentTime.textContent = formatTime(audio.currentTime);
+                elements.duration.textContent = formatTime(audio.duration);
+            }
+        }
+        function formatTime(s) { if (isNaN(s)) return '0:00'; const m = Math.floor(s / 60), sc = Math.floor(s % 60); return `${m}:${sc.toString().padStart(2, '0')}`; }
+        function setProgress(e) { const rect = elements.progressBar.getBoundingClientRect(); const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)); audio.currentTime = percent * audio.duration; }
+
+        let vol = 0.7;
+        function setVolume(e) { const rect = elements.volumeSlider.getBoundingClientRect(); let p = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)); vol = p; audio.volume = p; elements.volumeFill.style.width = `${p * 100}%`; elements.volumeIcon.className = p === 0 ? 'fas fa-volume-mute volume-icon' : p < 0.5 ? 'fas fa-volume-down volume-icon' : 'fas fa-volume-up volume-icon'; }
+        function toggleMute() { if (audio.volume > 0) { audio.volume = 0; elements.volumeFill.style.width = '0%'; elements.volumeIcon.className = 'fas fa-volume-mute volume-icon'; } else { audio.volume = vol; elements.volumeFill.style.width = `${vol * 100}%`; elements.volumeIcon.className = 'fas fa-volume-up volume-icon'; } }
+
+        function updatePlaylistUI() {
+            if (!elements.playlistContainer) return;
+            elements.playlistContainer.innerHTML = '';
+            playlist.forEach((track, idx) => {
+                const item = document.createElement('div');
+                item.className = `playlist-item ${idx === currentTrack ? 'active' : ''}`;
+                item.innerHTML = `<div class="playlist-icon"><i class="fas fa-music"></i></div><div class="playlist-info"><div class="playlist-title">${escapeHtml(track.title || 'Untitled')}</div><div class="playlist-artist">${escapeHtml(track.artist || 'Unknown')}</div></div>`;
+                item.addEventListener('click', () => { currentTrack = idx; isPlaying = true; loadTrack(currentTrack); audio.play(); });
+                elements.playlistContainer.appendChild(item);
+            });
+        }
+        function escapeHtml(t) { const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+
+        function toggleExpand() {
+            isExpanded = !isExpanded;
+            if (isExpanded) {
+                elements.dynamicIsland.classList.add('expanded');
+                elements.expandedContent.style.display = 'block';
+                elements.musicIcon.style.display = 'none';
+                if (document.querySelector('.track-info-mini')) document.querySelector('.track-info-mini').style.display = 'none';
+                if (document.querySelector('.play-pause-mini')) document.querySelector('.play-pause-mini').style.display = 'none';
+            } else {
+                elements.dynamicIsland.classList.remove('expanded');
+                elements.expandedContent.style.display = 'none';
+                elements.musicIcon.style.display = 'flex';
+                if (document.querySelector('.track-info-mini')) document.querySelector('.track-info-mini').style.display = 'block';
+                if (document.querySelector('.play-pause-mini')) document.querySelector('.play-pause-mini').style.display = 'flex';
+            }
+        }
+
+        elements.dynamicIsland.addEventListener('click', (e) => {
+            if (!e.target.closest('.control-btn') && !e.target.closest('.play-pause-mini') && !e.target.closest('.playlist-item') && !e.target.closest('.progress-bar') && !e.target.closest('.volume-slider') && !e.target.closest('.volume-icon')) toggleExpand();
         });
+        elements.playPauseMini.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
+        elements.playPauseExpanded.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
+        elements.prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevTrack(); });
+        elements.nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextTrack(); });
+        elements.progressBar.addEventListener('click', (e) => { e.stopPropagation(); setProgress(e); });
+        elements.volumeSlider.addEventListener('click', (e) => { e.stopPropagation(); setVolume(e); });
+        elements.volumeIcon.addEventListener('click', (e) => { e.stopPropagation(); toggleMute(); });
 
-        // Debounce scroll events
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                // Scroll-based logic here if needed
-            }, 100);
-            
-        });
+        audio.addEventListener('timeupdate', updateProgress);
+        audio.addEventListener('loadedmetadata', () => { elements.duration.textContent = formatTime(audio.duration); });
+        audio.addEventListener('ended', nextTrack);
 
-
+        function init() {
+            loadPlaylist();
+            audio.volume = vol;
+            elements.volumeFill.style.width = `${vol * 100}%`;
+            if (playlist.length) { loadTrack(0); audio.pause(); isPlaying = false; }
+            updatePlayButtons();
+            updatePlaylistUI();
+        }
+        init();
     </script>
-
-<!-- Tambahkan ini sebelum tag </body> -->
-<style>
-    /* Music Player - Dynamic Island Style (Compact & Mobile Friendly) */
-    .music-island {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 9998;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    /* Dynamic Island Container - Compact */
-    .dynamic-island {
-        background: rgba(26, 26, 26, 0.9);
-        backdrop-filter: blur(20px);
-        border-radius: 40px;
-        padding: 6px 12px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        border: 1px solid rgba(85, 85, 85, 0.5);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        cursor: pointer;
-        backdrop-filter: blur(20px);
-    }
-
-    .dynamic-island:hover {
-        background: rgba(51, 51, 51, 0.95);
-        border-color: rgba(224, 224, 224, 0.3);
-        transform: scale(1.02);
-    }
-
-    /* Expanded Mode */
-    .dynamic-island.expanded {
-        border-radius: 20px;
-        padding: 16px;
-        min-width: 280px;
-        max-width: 320px;
-        background: rgba(26, 26, 26, 0.98);
-        flex-direction: column;
-        align-items: stretch;
-        cursor: default;
-        gap: 12px;
-    }
-
-    .dynamic-island.expanded:hover {
-        transform: none;
-    }
-
-    /* Mini Mode Content */
-    .music-icon {
-        width: 32px;
-        height: 32px;
-        background: linear-gradient(135deg, #555, #333);
-        border-radius: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.9rem;
-        color: #e0e0e0;
-        transition: all 0.3s ease;
-    }
-
-    .track-info-mini {
-        flex: 1;
-        min-width: 0;
-    }
-
-    .track-title-mini {
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: #e0e0e0;
-        margin-bottom: 1px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .track-artist-mini {
-        font-size: 0.65rem;
-        color: #aaa;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .play-pause-mini {
-        width: 28px;
-        height: 28px;
-        background: rgba(85, 85, 85, 0.5);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
-        color: #e0e0e0;
-        font-size: 0.7rem;
-    }
-
-    .play-pause-mini:hover {
-        background: #555;
-        transform: scale(1.05);
-    }
-
-    /* Expanded Mode Content */
-    .album-art {
-        width: 100%;
-        aspect-ratio: 1;
-        border-radius: 12px;
-        background: linear-gradient(135deg, #333, #1a1a1a);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .album-art img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 12px;
-    }
-
-    .album-art i {
-        font-size: 2rem;
-        color: #e0e0e0;
-        opacity: 0.5;
-    }
-
-    .track-info-expanded {
-        text-align: center;
-    }
-
-    .track-title-expanded {
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: #e0e0e0;
-        margin-bottom: 2px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .track-artist-expanded {
-        font-size: 0.75rem;
-        color: #aaa;
-    }
-
-    /* Progress Bar */
-    .progress-container {
-        margin: 8px 0;
-    }
-
-    .progress-bar {
-        width: 100%;
-        height: 3px;
-        background: rgba(85, 85, 85, 0.3);
-        border-radius: 2px;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .progress-fill {
-        width: 0%;
-        height: 100%;
-        background: linear-gradient(90deg, #e0e0e0, #aaa);
-        border-radius: 2px;
-        transition: width 0.1s linear;
-    }
-
-    .time-info {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 4px;
-        font-size: 0.6rem;
-        color: #aaa;
-    }
-
-    /* Controls */
-    .controls-expanded {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-    }
-
-    .control-btn {
-        width: 32px;
-        height: 32px;
-        background: rgba(85, 85, 85, 0.3);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        border: none;
-        color: #e0e0e0;
-        font-size: 0.8rem;
-    }
-
-    .control-btn:hover {
-        background: #555;
-        transform: scale(1.05);
-    }
-
-    .control-btn.play-btn {
-        background: linear-gradient(135deg, #555, #333);
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-
-    /* Volume Control - Compact */
-    .volume-control {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .volume-icon {
-        font-size: 0.7rem;
-        color: #aaa;
-        cursor: pointer;
-        width: 20px;
-    }
-
-    .volume-slider {
-        flex: 1;
-        height: 3px;
-        background: rgba(85, 85, 85, 0.3);
-        border-radius: 2px;
-        cursor: pointer;
-        position: relative;
-    }
-
-    .volume-fill {
-        width: 70%;
-        height: 100%;
-        background: linear-gradient(90deg, #e0e0e0, #aaa);
-        border-radius: 2px;
-    }
-
-    /* Playlist - Compact */
-    .playlist {
-        max-height: 150px;
-        overflow-y: auto;
-        margin-top: 8px;
-        border-top: 1px solid rgba(85, 85, 85, 0.3);
-        padding-top: 8px;
-    }
-
-    .playlist-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 6px 8px;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        margin-bottom: 2px;
-    }
-
-    .playlist-item:hover {
-        background: rgba(85, 85, 85, 0.3);
-    }
-
-    .playlist-item.active {
-        background: rgba(85, 85, 85, 0.5);
-    }
-
-    .playlist-item .playlist-icon {
-        width: 28px;
-        height: 28px;
-        background: rgba(85, 85, 85, 0.3);
-        border-radius: 6px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.7rem;
-    }
-
-    .playlist-item .playlist-info {
-        flex: 1;
-        min-width: 0;
-    }
-
-    .playlist-item .playlist-title {
-        font-size: 0.75rem;
-        font-weight: 500;
-        color: #e0e0e0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .playlist-item .playlist-artist {
-        font-size: 0.65rem;
-        color: #aaa;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    /* Scrollbar */
-    .playlist::-webkit-scrollbar {
-        width: 3px;
-    }
-
-    .playlist::-webkit-scrollbar-track {
-        background: rgba(85, 85, 85, 0.2);
-        border-radius: 2px;
-    }
-
-    .playlist::-webkit-scrollbar-thumb {
-        background: #555;
-        border-radius: 2px;
-    }
-
-    /* Animations */
-    @keyframes pulse {
-        0%, 100% { opacity: 0.5; }
-        50% { opacity: 1; }
-    }
-
-    .now-playing-badge {
-        font-size: 0.55rem;
-        color: #aaa;
-        text-align: center;
-        margin-top: 6px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-    }
-
-    .now-playing-badge i {
-        font-size: 0.4rem;
-        animation: pulse 1.5s ease infinite;
-    }
-
-    /* Responsive Mobile */
-    @media (max-width: 768px) {
-        .music-island {
-            bottom: 15px;
-            right: 15px;
-            left: auto;
-        }
-        
-        .dynamic-island.expanded {
-            position: fixed;
-            bottom: 15px;
-            right: 15px;
-            left: 15px;
-            width: auto;
-            max-width: none;
-            min-width: auto;
-        }
-    }
-</style>
-
-<div class="music-island">
-    <div class="dynamic-island" id="dynamicIsland">
-        <!-- Mini Mode Content -->
-        <div class="music-icon" id="musicIcon">
-            <i class="fas fa-music"></i>
-        </div>
-        <div class="track-info-mini">
-            <div class="track-title-mini" id="miniTitle">No music</div>
-            <div class="track-artist-mini" id="miniArtist">Select a track</div>
-        </div>
-        <button class="play-pause-mini" id="playPauseMini">
-            <i class="fas fa-play"></i>
-        </button>
-        
-        <!-- Expanded Mode Content -->
-        <div class="expanded-content" style="display: none;">
-            <div class="album-art" id="albumArt">
-                <i class="fas fa-headphones"></i>
-            </div>
-            <div class="track-info-expanded">
-                <div class="track-title-expanded" id="expandedTitle">No music</div>
-                <div class="track-artist-expanded" id="expandedArtist">Select a track</div>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <div class="time-info">
-                    <span id="currentTime">0:00</span>
-                    <span id="duration">0:00</span>
-                </div>
-            </div>
-            <div class="controls-expanded">
-                <button class="control-btn" id="prevBtn">
-                    <i class="fas fa-backward"></i>
-                </button>
-                <button class="control-btn play-btn" id="playPauseExpanded">
-                    <i class="fas fa-play"></i>
-                </button>
-                <button class="control-btn" id="nextBtn">
-                    <i class="fas fa-forward"></i>
-                </button>
-            </div>
-            <div class="volume-control">
-                <i class="fas fa-volume-up volume-icon" id="volumeIcon"></i>
-                <div class="volume-slider" id="volumeSlider">
-                    <div class="volume-fill" id="volumeFill"></div>
-                </div>
-            </div>
-            <div class="playlist" id="playlist"></div>
-            <div class="now-playing-badge">
-                <i class="fas fa-circle"></i>
-                <span>Dynamic Island Player</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    // ==================== PLAYLIST (EDIT DI SINI) ====================
-    // Perhatikan format yang benar: setiap lagu dibungkus { } dan dipisah koma
-    let playlist = [
-        {
-            title: "Nina",
-            artist: "Feast",
-            url: "https://videotourl.com/audio/1775696680006-2cc9ecee-36c9-4bf9-a88d-8b4556a365ff.mp3",
-            cover: "https://sukabumihitz.com/wp-content/uploads/2025/01/Screenshot-19.png"
-        },
-        {
-            title: "Gemilang",
-            artist: "Perunggu",
-            url: "https://videotourl.com/audio/1775696883250-fad009be-4133-4a11-8cbe-6708f8ae3be5.mp3",
-            cover: "https://images.genius.com/b164971f3645612bb5016fa6e3155579.1000x1000x1.png"
-        },
-        {
-            title: "Membasuh",
-            artist: "Hindia",
-            url: "https://videotourl.com/audio/1775697754706-f3acc2b9-26ff-4fbd-85f6-7a6eb2dea97d.mp3",
-            cover: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSbgPL4auMmC-EaoVwW_26rVV0wSsLjX5bMH03PLYyzsZyWH54zPG1hLeDq6DjZbo7yawko_lSRLQ-NRkMa6YwP4qVymZjkS5VtCO35wnsrtkl6ubLdR3m4lmuXnwnmOs3fMLTAu7QT62M5kEkyNuBBSrHbtBtJH0sP_tqoJHP_t2gEomjiVaaYeaPz0A/s500/artworks-fpT6bbk7KwNi1mIU-tLZXkg-t500x500.jpg"
-        }
-    ];
-    // ================================================================
-    
-    // Save to localStorage (optional, agar playlist tersimpan)
-    function savePlaylistToStorage() {
-        localStorage.setItem('musicPlaylist', JSON.stringify(playlist));
-    }
-    
-    function loadPlaylistFromStorage() {
-        const saved = localStorage.getItem('musicPlaylist');
-        if (saved) {
-            try {
-                const savedPlaylist = JSON.parse(saved);
-                if (savedPlaylist && savedPlaylist.length > 0) {
-                    playlist = savedPlaylist;
-                }
-            } catch(e) { console.error(e); }
-        }
-        savePlaylistToStorage();
-    }
-    
-    // Player State
-    let currentTrackIndex = 0;
-    let isPlaying = false;
-    let isExpanded = false;
-    let audio = new Audio();
-    
-    // DOM Elements
-    const dynamicIsland = document.getElementById('dynamicIsland');
-    const miniTitle = document.getElementById('miniTitle');
-    const miniArtist = document.getElementById('miniArtist');
-    const expandedTitle = document.getElementById('expandedTitle');
-    const expandedArtist = document.getElementById('expandedArtist');
-    const albumArt = document.getElementById('albumArt');
-    const playPauseMini = document.getElementById('playPauseMini');
-    const playPauseExpanded = document.getElementById('playPauseExpanded');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const progressBar = document.getElementById('progressBar');
-    const progressFill = document.getElementById('progressFill');
-    const currentTimeEl = document.getElementById('currentTime');
-    const durationEl = document.getElementById('duration');
-    const volumeSlider = document.getElementById('volumeSlider');
-    const volumeFill = document.getElementById('volumeFill');
-    const volumeIcon = document.getElementById('volumeIcon');
-    const playlistContainer = document.getElementById('playlist');
-    const expandedContent = document.querySelector('.expanded-content');
-    const musicIcon = document.getElementById('musicIcon');
-    
-    // Load Track
-    function loadTrack(index) {
-        if (playlist.length === 0) {
-            miniTitle.textContent = 'No music';
-            miniArtist.textContent = 'Add songs to playlist';
-            expandedTitle.textContent = 'No music';
-            expandedArtist.textContent = 'Add songs to playlist';
-            albumArt.innerHTML = '<i class="fas fa-headphones"></i>';
-            return;
-        }
-        
-        currentTrackIndex = Math.min(index, playlist.length - 1);
-        const track = playlist[currentTrackIndex];
-        if (!track) return;
-        
-        audio.src = track.url;
-        audio.load();
-        
-        // Update UI
-        miniTitle.textContent = track.title || 'Untitled';
-        miniArtist.textContent = track.artist || 'Unknown Artist';
-        expandedTitle.textContent = track.title || 'Untitled';
-        expandedArtist.textContent = track.artist || 'Unknown Artist';
-        
-        // Update album art
-        if (track.cover && track.cover.startsWith('http')) {
-            albumArt.innerHTML = `<img src="${track.cover}" alt="${track.title}">`;
-        } else {
-            albumArt.innerHTML = '<i class="fas fa-music"></i>';
-        }
-        
-        // Update playlist active state
-        updatePlaylistUI();
-        
-        // Reset progress
-        progressFill.style.width = '0%';
-        currentTimeEl.textContent = '0:00';
-        
-        // Auto-play if was playing
-        if (isPlaying) {
-            audio.play().catch(e => console.log('Auto-play prevented:', e));
-        }
-        
-        updatePlayButtons();
-        
-        console.log('Loaded track:', track.title); // Debug log
-    }
-    
-    // Update Play Buttons
-    function updatePlayButtons() {
-        const icon = isPlaying ? 'fa-pause' : 'fa-play';
-        playPauseMini.querySelector('i').className = `fas ${icon}`;
-        playPauseExpanded.querySelector('i').className = `fas ${icon}`;
-    }
-    
-    // Toggle Play/Pause
-    function togglePlay() {
-        if (playlist.length === 0) return;
-        
-        if (!audio.src) {
-            loadTrack(0);
-        }
-        
-        if (isPlaying) {
-            audio.pause();
-        } else {
-            audio.play().catch(e => console.log('Play error:', e));
-        }
-        isPlaying = !isPlaying;
-        updatePlayButtons();
-    }
-    
-    // Next Track
-    function nextTrack() {
-        if (playlist.length === 0) return;
-        currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
-        isPlaying = true;
-        loadTrack(currentTrackIndex);
-        audio.play().catch(e => console.log('Play error:', e));
-    }
-    
-    // Previous Track
-    function prevTrack() {
-        if (playlist.length === 0) return;
-        currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
-        isPlaying = true;
-        loadTrack(currentTrackIndex);
-        audio.play().catch(e => console.log('Play error:', e));
-    }
-    
-    // Update Progress
-    function updateProgress() {
-        if (audio.duration) {
-            const percent = (audio.currentTime / audio.duration) * 100;
-            progressFill.style.width = `${percent}%`;
-            currentTimeEl.textContent = formatTime(audio.currentTime);
-            durationEl.textContent = formatTime(audio.duration);
-        }
-    }
-    
-    // Format Time
-    function formatTime(seconds) {
-        if (isNaN(seconds)) return '0:00';
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins}:${secs.toString().padStart(2, '0')}`;
-    }
-    
-    // Set Progress
-    function setProgress(e) {
-        const rect = progressBar.getBoundingClientRect();
-        const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-        audio.currentTime = percent * audio.duration;
-    }
-    
-    // Set Volume
-    let currentVolume = 0.7;
-    function setVolume(e) {
-        const rect = volumeSlider.getBoundingClientRect();
-        let percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-        currentVolume = percent;
-        audio.volume = percent;
-        volumeFill.style.width = `${percent * 100}%`;
-        
-        if (percent === 0) {
-            volumeIcon.className = 'fas fa-volume-mute volume-icon';
-        } else if (percent < 0.5) {
-            volumeIcon.className = 'fas fa-volume-down volume-icon';
-        } else {
-            volumeIcon.className = 'fas fa-volume-up volume-icon';
-        }
-    }
-    
-    function toggleMute() {
-        if (audio.volume > 0) {
-            audio.volume = 0;
-            volumeFill.style.width = '0%';
-            volumeIcon.className = 'fas fa-volume-mute volume-icon';
-        } else {
-            audio.volume = currentVolume;
-            volumeFill.style.width = `${currentVolume * 100}%`;
-            volumeIcon.className = 'fas fa-volume-up volume-icon';
-        }
-    }
-    
-    // Update Playlist UI
-    function updatePlaylistUI() {
-        if (!playlistContainer) return;
-        
-        playlistContainer.innerHTML = '';
-        console.log('Updating playlist UI with', playlist.length, 'songs'); // Debug log
-        
-        playlist.forEach((track, index) => {
-            const item = document.createElement('div');
-            item.className = `playlist-item ${index === currentTrackIndex ? 'active' : ''}`;
-            item.innerHTML = `
-                <div class="playlist-icon">
-                    <i class="fas fa-music"></i>
-                </div>
-                <div class="playlist-info">
-                    <div class="playlist-title">${escapeHtml(track.title || 'Untitled')}</div>
-                    <div class="playlist-artist">${escapeHtml(track.artist || 'Unknown')}</div>
-                </div>
-            `;
-            
-            item.addEventListener('click', () => {
-                currentTrackIndex = index;
-                isPlaying = true;
-                loadTrack(currentTrackIndex);
-                audio.play().catch(e => console.log('Play error:', e));
-            });
-            
-            playlistContainer.appendChild(item);
-        });
-    }
-    
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-    
-    // Clear localStorage to force reload playlist from code
-    function resetPlaylist() {
-        localStorage.removeItem('musicPlaylist');
-        console.log('LocalStorage cleared. Reloading default playlist...');
-        location.reload();
-    }
-    
-    // Toggle Expand/Collapse
-    function toggleExpand() {
-        isExpanded = !isExpanded;
-        
-        if (isExpanded) {
-            dynamicIsland.classList.add('expanded');
-            expandedContent.style.display = 'block';
-            musicIcon.style.display = 'none';
-            document.querySelector('.track-info-mini').style.display = 'none';
-            document.querySelector('.play-pause-mini').style.display = 'none';
-        } else {
-            dynamicIsland.classList.remove('expanded');
-            expandedContent.style.display = 'none';
-            musicIcon.style.display = 'flex';
-            document.querySelector('.track-info-mini').style.display = 'block';
-            document.querySelector('.play-pause-mini').style.display = 'flex';
-        }
-    }
-    
-    // Event Listeners
-    dynamicIsland.addEventListener('click', (e) => {
-        if (!e.target.closest('.control-btn') && 
-            !e.target.closest('.play-pause-mini') &&
-            !e.target.closest('.playlist-item') &&
-            !e.target.closest('.progress-bar') &&
-            !e.target.closest('.volume-slider') &&
-            !e.target.closest('.volume-icon')) {
-            toggleExpand();
-        }
-    });
-    
-    playPauseMini.addEventListener('click', (e) => {
-        e.stopPropagation();
-        togglePlay();
-    });
-    
-    playPauseExpanded.addEventListener('click', (e) => {
-        e.stopPropagation();
-        togglePlay();
-    });
-    
-    prevBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        prevTrack();
-    });
-    
-    nextBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        nextTrack();
-    });
-    
-    progressBar.addEventListener('click', (e) => {
-        e.stopPropagation();
-        setProgress(e);
-    });
-    
-    volumeSlider.addEventListener('click', (e) => {
-        e.stopPropagation();
-        setVolume(e);
-    });
-    
-    volumeIcon.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMute();
-    });
-    
-    // Audio Events
-    audio.addEventListener('timeupdate', updateProgress);
-    audio.addEventListener('loadedmetadata', () => {
-        durationEl.textContent = formatTime(audio.duration);
-    });
-    audio.addEventListener('ended', nextTrack);
-    
-    // Initialize
-    function init() {
-        loadPlaylistFromStorage();
-        audio.volume = currentVolume;
-        volumeFill.style.width = `${currentVolume * 100}%`;
-        
-        if (playlist.length > 0) {
-            loadTrack(0);
-            audio.pause();
-            isPlaying = false;
-        }
-        updatePlayButtons();
-        updatePlaylistUI();
-        
-        console.log('Player initialized with', playlist.length, 'songs');
-    }
-    
-    init();
-</script>
-
 </body>
 </html>
